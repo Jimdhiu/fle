@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
 
-
+  before_action :set_document, only: [:show, :edit, :update]
 
   def index
   end
@@ -22,13 +22,17 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    set_document
   end
 
   def edit
   end
 
   def update
+     if @document.update(document_params)
+      redirect_to @document
+    else
+      render :edit
+    end
   end
 
   def destroy
