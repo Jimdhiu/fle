@@ -1,4 +1,10 @@
 <h1>Welcome</h1>
 <% @categories.each do |category| %>
   <p><%= category.name %></p>
+  <% @documents.each do |document| %>
+  <%= link_to document.tag.name, document_path(document)  %>
 <% end %>
+
+<% end %>
+
+
