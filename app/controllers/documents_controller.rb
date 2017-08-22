@@ -22,6 +22,7 @@ class DocumentsController < ApplicationController
   end
 
   def show
+    set_document
   end
 
   def edit
@@ -37,6 +38,10 @@ class DocumentsController < ApplicationController
 
   def document_params
     params.require(:document).permit(:tag_id, :document_date, :photo)
+  end
+
+  def set_document
+    @document = Document.find(params[:id])
   end
 
 end
