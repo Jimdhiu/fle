@@ -5,6 +5,7 @@
         <h1>Upload a document</h1>
         </div>
        <%= simple_form_for @document do |d| %>
+         <%= d.input :photo, as: :attachinary %>
          <%= d.input :document_date %>
          <%= d.input :tag_id, collection: @tags, prompt: "Select tag"%>
          <%= d.submit class: "text-center btn btn-primary" %>
