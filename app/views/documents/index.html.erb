@@ -1,10 +1,39 @@
 <h1>Welcome</h1>
+
+
 <% @categories.each do |category| %>
-  <p><%= category.name %></p>
-  <% @documents.each do |document| %>
-  <%= link_to document.tag.name, document_path(document)  %>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= category.name %>" aria-expanded="true" aria-controls="<%= category.name %>">
+           <%= category.name %>
+          </a>
+        </h4>
+      </div>
+      <div id="<%= category.name %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+        <% @documents.each do |document| %>
+          <% Document.where(category: category).each do |document| %>
+            <%= document.tag.name %>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
-<% end %>
+
+
+
+
+
+
+
+<!-- -================================================ -->
+
+
+
 
 
