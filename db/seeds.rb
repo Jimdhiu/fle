@@ -7,48 +7,77 @@ Category.destroy_all
 Tag.destroy_all
 User.destroy_all
 
+documents = {
+  "Personel" => {
+    identity: "Carte d'identité",
+    passport: "Passeport",
 
-categories = ["Pièces d'identité", "Auto",
- "Finance", "Emploi", "Médical", "Habitation", "Éducation"]
+  },
+  "Auto" => {
+    driver_license: "Permis de conduire",
+    gray_card: "Carte grise",
 
-tags = ["Carte d'identité", "Passport", "Permis de conduire", "Numéro de sécurité social",
-  "Bulletin de paie", "Justificatif de domicile", "Avis d'imposition", "Relevé de compte bancaire"]
+  },
+  "Finance" => {
+    rib: "RIB",
+    bank_statement: "Relevé bancaire",
+  },
+  "Emploi" => {
+    pay_slip: "Bulletin de salaire",
+    employment_contract: "Contrat de travail"
+  },
+  "Medical" => {
+    vital_card: "Carte vital",
+    health_book: "Carnet de santé"
+  },
+  "Habitation" => {
+    proof_address: "Justificatif de domicile",
+    rent_receipt: "Quittance de loyer"
+  },
+  "Education" => {
+    school_certificate: "Certificat de scolarité",
+    diplomas: "Diplomes"
+  }
+}
 
-categories.each do |category|
-  Category.create(name: category)
+categories = []
+tags = []
+
+
+documents.each do |category, tag_hash|
+  category = Category.create(name: category)
+  categories << category
+
+  puts "Catégorie #{category} créée"
+  puts "---------------------------"
+  tag_hash.each do |key, tag|
+    tag = Tag.create(name: tag)
+    tags << tag
+    puts "Tag #{tag}crée "
+    puts "---------------"
+  end
 end
 
-puts "Catégories créées .... "
-puts "-----------------------"
-
-
-
-tags.each do |tag|
-  Tag.create(name: tag)
-end
-
-puts "Tags crées ...."
-puts "---------------"
 
 user = User.create(email: "test@gmail.com", password: "password")
 
 puts "1 user créé !"
 
+puts documents
+p categories
+p tags
+docs = []
 
-Document.create(verified: true, document_date: Date.new(2017,3,8),
-  expiration_date: Date.new(2017,3,8) + 200, user: user,
-  category: Category.first,
-  tag: Tag.first)
+categories.each_with_index do |category, index|
+  2.times do |i|
 
-Document.create(verified: true, document_date: Date.new(2017,3,8),
-  expiration_date: Date.new(2017,3,8) + 200, user: user,
-  category: Category.,
-  tag: Tag.all.sample)
+    Document.create(verified: true, document_date: Date.new(2017,3,8),
+    expiration_date: Date.new(2017,3,8) + 200, user: user,
+    category: category, tag: tags[i])
+    tags.shift
+  end
+end
 
-Document.create(verified: true, document_date: Date.new(2017,3,8),
-  expiration_date: Date.new(2017,3,8) + 200, user: user,
-  category: Category.all.sample,
-  tag: Tag.all.sample)
 
 
 
