@@ -3,6 +3,8 @@ class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update]
 
   def index
+    @documents = Document.where(user: current_user)
+    @categories = Category.all
   end
 
   def new
