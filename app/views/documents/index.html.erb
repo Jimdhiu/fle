@@ -13,11 +13,9 @@
       </div>
       <div id="<%= category.name %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-        <% @documents.each do |document| %>
-          <% Document.where(category: category).each do |document| %>
-            <%= document.tag.name %>
-          <% end %>
-        <% end %>
+
+
+
         </div>
       </div>
     </div>
