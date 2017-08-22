@@ -63,9 +63,6 @@ user = User.create(email: "test@gmail.com", password: "password")
 
 puts "1 user créé !"
 
-puts documents
-p categories
-p tags
 docs = []
 
 categories.each_with_index do |category, index|
