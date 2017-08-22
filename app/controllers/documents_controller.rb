@@ -32,6 +32,9 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    @document = set_document
+    @document.destroy
+    redirect_to root_path
   end
 
   private

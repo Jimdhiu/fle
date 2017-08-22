@@ -6,5 +6,6 @@
 <% end %>
 
 <p> <%= @document.document_date  %></p>
+<%= link_to "delete", document_path(document), method: :delete %>
 
 
