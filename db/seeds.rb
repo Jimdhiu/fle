@@ -48,12 +48,12 @@ documents.each do |category, tag_hash|
   category = Category.create(name: category)
   categories << category
 
-  puts "Catégorie #{category} créée"
+  puts "Catégorie #{category.name} créée"
   puts "---------------------------"
   tag_hash.each do |key, tag|
     tag = Tag.create(name: tag)
     tags << tag
-    puts "Tag #{tag}crée "
+    puts "Tag #{tag.name} crée "
     puts "---------------"
   end
 end
@@ -68,12 +68,14 @@ docs = []
 categories.each_with_index do |category, index|
   2.times do |i|
 
-    Document.create(verified: true, document_date: Date.new(2017,3,8),
+    doc = Document.create(verified: true, document_date: Date.new(2017,3,8),
     expiration_date: Date.new(2017,3,8) + 200, user: user,
     category: category, tag: tags[i])
     tags.shift
   end
 end
+
+Document.last.destroy
 
 
 

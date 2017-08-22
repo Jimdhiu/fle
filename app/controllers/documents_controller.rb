@@ -3,6 +3,8 @@ class DocumentsController < ApplicationController
 
 
   def index
+    @documents = Document.where(user: current_user)
+    @categories = Category.all
   end
 
   def new
