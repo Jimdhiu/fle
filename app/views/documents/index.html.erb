@@ -16,7 +16,9 @@
     <div id="collapse<%= category.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         <% category.tags.each do |tag| %>
-        <p> <%= tag.name %> </p>
+          <% tag.documents.each do |document| %>
+            <%= link_to tag.name, document_path(document) %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -25,3 +27,4 @@
 </div>
 
 </div>
+
