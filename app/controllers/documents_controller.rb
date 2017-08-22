@@ -27,6 +27,7 @@ class DocumentsController < ApplicationController
   end
 
   def edit
+    @tags = Tag.all
   end
 
   def update
