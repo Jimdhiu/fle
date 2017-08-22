@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
 
-  before_action :set_document, only: [:show, :edit, :update]
+  before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index
     @documents = Document.where(user: current_user)
@@ -38,7 +38,7 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    @document = set_document
+
     @document.destroy
     redirect_to root_path
   end
