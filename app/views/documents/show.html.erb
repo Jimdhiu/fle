@@ -1,11 +1,15 @@
-<h1> <%= @document.tag_id  %></h1>
+<div class="text-center">
+  <h1> <%= @document.tag.name  %></h1>
 
-<div class="overview">
-<% if @document.photo? %>
-  <%= cl_image_tag @document.photo.path, width: 400, height: 400, crop: :fill %>
-<% end %>
+  <div class="overview">
+  <% if @document.photo? %>
+    <%= cl_image_tag @document.photo.path, width: 400, height: 400, crop: :fill %>
+  <% end %>
 
-<p> <%= @document.document_date  %></p>
-<%= link_to "delete", document_path(@document), method: :delete %>
+  <p>Expire le : <%= @document.document_date  %> </p>
 
+  <%= link_to 'Back', root_path %>
+  <%= link_to 'Edit', edit_document_path(@document) %>
+  <%= link_to 'Delete', document_path(@document), methode: :delete %>
 
+</div>
