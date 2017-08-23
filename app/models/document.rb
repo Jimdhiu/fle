@@ -9,8 +9,8 @@ class Document < ApplicationRecord
   has_attachment :photo
 
 
-  def expiration_date
-    @expiration_date = @document_date + expiration[self.tag.name]
+  def expiration_date?
+    (self.document_date + self.tag.validity) < Date.today
   end
 
 
