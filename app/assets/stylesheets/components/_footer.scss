@@ -1,0 +1,47 @@
+.footer {
+  background-color: #FFF;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: normal;
+
+}
+
+.reseaux-sociaux {
+  padding: 0px 25px;
+  margin-top: 25px;
+
+
+
+  a {
+    color: #132457;
+
+    &:hover {
+      color: #132457;
+    }
+  }
+}
+
+.copyright {
+  color: #132457;
+  padding: 0px 25px;
+  margin-top: 25px;
+}
+
+.pages {
+  // padding: 15px 15px;
+  margin-top: 25px;
+  display: flex;
+  text-align: center;
+  ul {
+    list-style-type: none;
+  }
+  a {
+    text-decoration: none;
+    color: #132457;
+    display: flex;
+    &:hover {
+      color: #132457;
+    }
+  }
+}
