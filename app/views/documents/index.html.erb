@@ -21,7 +21,8 @@
                     <br>
                     <% current_user.documents.where(tag: tag).each do |document| %>
                       <%= render 'modal', document: document  %>
-
+                      <%= "Absent or expired document" if document.expiration_date? %>
+                
                     <% end %>
                     <br>
                   <% else %>
@@ -30,7 +31,6 @@
                         <div class="panel-heading" role="tab" id="headingOne">
                           <h4 class="panel-title text-center">
                               <%= link_to tag.name, "#", data: { toggle: "modal", target: "#document-show" } %> - <%= tag.complete_for?(current_user) %>
-
                           </h4>
                         </div>
                       </a>
