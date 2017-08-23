@@ -51,7 +51,17 @@
 
 }
 
-
+.first-child {
+  position: relative;
+  width: 90%;
+  border: 1px solid #979797;
+  border-radius: 8px;
+  font-family: Helvetica-Bold;
+  font-size: 21px;
+  color: #132457;
+  padding: 12px;
+  margin-bottom: 10px;
+}
 
 .selected {
   background-color: #132457;

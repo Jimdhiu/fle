@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+     <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
+       <div class="text-center">
+        <h1>Upload a document</h1>
+        </div>
+       <%= simple_form_for @document do |d| %>
+         <%= d.input :photo, as: :attachinary %>
+         <%= d.input :document_date %>
+         <%= d.input :tag_id, collection: @tags, prompt: "Select tag"%>
+         <%= d.submit class: "text-center btn btn-primary" %>
+       <% end %>
+     </div>
+ </div>
+</div>
