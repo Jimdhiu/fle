@@ -17,6 +17,7 @@
             <% category.tags.each do |tag| %>
               <% tag.documents.each do |document| %>
                 <%= link_to tag.name, document_path(document) %>
+                <%= "invalid" if document.expiration_date? %>
               <% end %>
             <% end %>
           </div>
