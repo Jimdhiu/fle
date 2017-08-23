@@ -1,1 +1,73 @@
 // Specific CSS for your home-page
+body {
+  margin: 0;
+}
+
+.page-container {
+  height: 100vh;
+  background-color: red;
+  width: 100%;
+  display: flex;
+}
+
+.left-column {
+  height: 100%;
+  width: 20%;
+  background-color: #FFF;
+}
+
+
+//
+//   .navbar {
+//       height : 10%;
+//       width : 80%;
+//       background-color: yellow;
+//   }
+// }
+
+//
+// .wrapper {
+//   width: 100%;
+//   height: 100%;
+// }
+//
+// .wrapper p {
+//   padding: 10px;
+// }
+//
+
+
+// #navigation  {
+// 	font-weight: bold;
+// 	text-decoration: none;
+// 	color: #FFFFFF;
+//   width: 100%;
+//   height: 100%;
+// }
+//
+// #navigation #en-cours a {
+// 	color: #1FD4F2;
+//   width: 100%;
+//   height: 5px;
+//   // padding-left: 50px;
+//   // padding-right: 50px;
+// }
+
+
+.first-child {
+  position: relative;
+  width: 90%;
+  border: 1px solid #979797;
+  border-radius: 8px;
+  font-family: Helvetica-Bold;
+  font-size: 21px;
+  color: #132457;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .right-column {
+    width: 100%;
+  }
+}
