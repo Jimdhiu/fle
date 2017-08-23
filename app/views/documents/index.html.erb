@@ -18,6 +18,7 @@
               <% tag.documents.each do |document| %>
 
                 <%= link_to tag.name, "#", data: { toggle: "modal", target: "#document-show" } %>
+                <%= "Absent or expired document" if document.expiration_date? %>
                 <%= render 'modal', document: document  %>
 
               <% end %>
