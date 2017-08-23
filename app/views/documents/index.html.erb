@@ -16,7 +16,8 @@
           <div class="panel-body">
             <% category.tags.each do |tag| %>
               <% tag.documents.each do |document| %>
-                <%= link_to tag.name, document_path(document) %>
+                <%= link_to tag.name, "#", data: { toggle: "modal", target: "#document-show" } %>
+                <%= render 'modal', document: document  %>
               <% end %>
             <% end %>
           </div>
@@ -26,3 +27,5 @@
     </div>
   </div>
 </div>
+
+
