@@ -32,7 +32,7 @@ class DocumentsController < ApplicationController
 
   def update
      if @document.update(document_params)
-      redirect_to @document
+      redirect_to root_path
     else
       render :edit
     end
