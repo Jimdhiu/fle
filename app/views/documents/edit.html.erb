@@ -6,7 +6,7 @@
         </div>
        <%= simple_form_for @document do |d| %>
          <%= d.input :photo, as: :attachinary %>
-         <%= d.input_field :document_date, as: :string, class: 'form-control', id: 'sandbox-container', label: "Date d'émission du document" %>
+         <%= d.input :document_date, as: :string, label: "Date d'émission du document", input_html: {id: 'sandbox-container'} %>
          <%= d.input :tag_id, collection: @tags, prompt: "Select tag"%>
          <%= d.submit class: "text-center btn btn-primary" %>
        <% end %>
