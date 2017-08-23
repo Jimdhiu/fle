@@ -6,10 +6,10 @@
     <%= cl_image_tag @document.photo.path, width: 400, height: 400, crop: :fill %>
   <% end %>
 
-  <p>Expire le : <%= @document.document_date  %> </p>
+  <p>Expire le : <%= @document.document_date %> </p>
 
   <%= link_to 'Back', root_path %>
   <%= link_to 'Edit', edit_document_path(@document) %>
-  <%= link_to 'Delete', document_path(@document), methode: :delete %>
+  <%= link_to 'Delete', document_path(@document), method: :delete %>
 
 </div>
