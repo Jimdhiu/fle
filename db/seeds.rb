@@ -84,20 +84,20 @@ puts "1 user créé !"
 puts "-------------"
 
 
-Document.create(user: user, tag: t1, document_date: 01/02/1955)
-Document.create(user: user, tag: t2, document_date: 01/02/1992)
-Document.create(user: user, tag: t3, document_date: 01/02/1992)
-Document.create(user: user, tag: t4, document_date: 01/02/1992)
-Document.create(user: user, tag: t5, document_date: 01/02/1992)
-Document.create(user: user, tag: t6, document_date: 01/02/1992)
-Document.create(user: user, tag: t7, document_date: 01/02/1992)
-Document.create(user: user, tag: t8, document_date: 01/02/1992)
-Document.create(user: user, tag: t9, document_date: 01/02/1992)
-Document.create(user: user, tag: t10, document_date: 01/02/1992)
-Document.create(user: user, tag: t11, document_date: 01/02/1992)
-Document.create(user: user, tag: t12, document_date: 01/02/1992)
-Document.create(user: user, tag: t13, document_date: 01/02/1992)
-Document.create(user: user, tag: t14, document_date: 01/02/1992)
+Document.create(user: user, tag: t1, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t2, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t3, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t4, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t5, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t6, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t7, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t8, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t9, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t10, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t11, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t12, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t13, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
+Document.create(user: user, tag: t14, document_date: Date.today - rand(10..10000), photo_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJDQ2YjgwYTkwLWNkMDktNGFlZi05MTg0LWVlMWU0NTkwNjdmNA.jpg")
 
 puts "14 documents créés"
 
