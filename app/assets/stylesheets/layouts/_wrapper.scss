@@ -24,12 +24,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  color: #132457;
 }
 
 .side {
   background-color: #21377A;
   color: #FFFFFF;
-  height: 100vh;
   flex: 0.8;
   text-align: center;
 }
@@ -49,18 +49,6 @@
   margin-top: 100px;
   margin: 15px;
 
-}
-
-.first-child {
-  position: relative;
-  width: 90%;
-  border: 1px solid #979797;
-  border-radius: 8px;
-  font-family: Helvetica-Bold;
-  font-size: 21px;
-  color: #132457;
-  padding: 12px;
-  margin-bottom: 10px;
 }
 
 .selected {

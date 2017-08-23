@@ -16,11 +16,11 @@
         <%= render 'shared/navbar' %>
         <%= render 'shared/nav_btn' %>
         <%= render 'shared/flashes' %>
-        <%= render 'shared/footer' %>
         <%= yield %>
       </div>
     </div>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
   </body>
+  <%= render 'shared/footer' %>
 </html>
