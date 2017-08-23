@@ -14,9 +14,9 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.build(document_params)
-    @document.save
-    flash[:notice] = "Votre document a bien été ajouté à votre librairie"
-    if @document.save
+    if @document.valid?
+      @document.save
+      flash[:notice] = "Votre document a bien été ajouté à votre librairie"
       redirect_to root_path
     else
       render :new
