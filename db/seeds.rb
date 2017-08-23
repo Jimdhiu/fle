@@ -60,20 +60,20 @@ education = Category.create(name: "Education")
 puts "7 catégories créées"
 puts "-------------------"
 
-t1 = Tag.create(name: "Carte d'identité", category: personnel, validity: 10*365)
-t2 = Tag.create(name: "passport", category: personnel, validity: 10*365)
-t3 = Tag.create(name: "Permis de conduire", category: auto, validity: 10*365)
-t4 = Tag.create(name: "Carte grise", category: auto, validity: 10*365)
-t5 = Tag.create(name: "RIB", category: finance, validity: 10*365)
+t1 = Tag.create(name: "Carte d'identité", category: personnel, validity: 10*, number_of_uploads: 1)
+t2 = Tag.create(name: "passport", category: personnel, validity: 10*, number_of_uploads: 1)
+t3 = Tag.create(name: "Permis de conduire", category: auto, validity: 10*, number_of_uploads: 1)
+t4 = Tag.create(name: "Carte grise", category: auto, validity: 10*, number_of_uploads: 1)
+t5 = Tag.create(name: "RIB", category: finance, validity: 10*, number_of_uploads: 1)
 t6 = Tag.create(name: "Relevé bancaire", category: finance, validity: 10)
-t7 = Tag.create(name: "Bulletin de salaire", category: emploi, validity: 10*365)
-t8 = Tag.create(name: "Contrat de travail", category: emploi, validity: 10*365)
-t9 = Tag.create(name: "Carnet de santé", category: medical, validity: 10*365)
-t10 = Tag.create(name: "Carte vital", category: medical, validity: 5*365)
-t11 = Tag.create(name: "Justificatif de domicile", category: habitation, validity: 60)
-t12 = Tag.create(name: "Quittance de loyer", category: habitation, validity: 10*365)
-t13 = Tag.create(name: "Certificat de scolarité", category: education, validity: 10*365)
-t14 = Tag.create(name: "Diplomes", category: education, validity: 10*365)
+t7 = Tag.create(name: "Bulletin de salaire", category: emploi, validity: 10*, number_of_uploads: 1)
+t8 = Tag.create(name: "Contrat de travail", category: emploi, validity: 10*, number_of_uploads: 1)
+t9 = Tag.create(name: "Carnet de santé", category: medical, validity: 10*, number_of_uploads: 1)
+t10 = Tag.create(name: "Carte vital", category: medical, validity: 5*, number_of_uploads: 1)
+t11 = Tag.create(name: "Justificatif de domicile", category: habitation, validity: 60, number_of_uploads: 1)
+t12 = Tag.create(name: "Quittance de loyer", category: habitation, validity: 10*, number_of_uploads: 1)
+t13 = Tag.create(name: "Certificat de scolarité", category: education, validity: 10*, number_of_uploads: 1)
+t14 = Tag.create(name: "Diplomes", category: education, validity: 10*, number_of_uploads: 1)
 
 puts "14 tags créés"
 puts "-------------"
@@ -100,5 +100,3 @@ Document.create(user: user, tag: t13, document_date: Date.today - rand(10..10000
 Document.create(user: user, tag: t14, document_date: Date.today - rand(10..10000))
 
 puts "14 documents créés"
-
-

@@ -4,7 +4,7 @@ class Document < ApplicationRecord
 
   # validates :photo, presence: true
   validates :document_date, presence: true
-  validates :tag_id, presence: true
+  validates :tag, presence: true
 
   has_attachment :photo
 
@@ -12,8 +12,4 @@ class Document < ApplicationRecord
   def expiration_date?
     (self.document_date + self.tag.validity) < Date.today
   end
-
-
-
-
 end
