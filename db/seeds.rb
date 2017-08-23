@@ -60,20 +60,20 @@ education = Category.create(name: "Education")
 puts "7 catégories créées"
 puts "-------------------"
 
-t1 = Tag.create(name: "Carte d'identité", category: personnel)
-t2 = Tag.create(name: "passport", category: personnel)
-t3 = Tag.create(name: "Permis de conduire", category: auto)
-t4 = Tag.create(name: "Carte grise", category: auto)
-t5 = Tag.create(name: "RIB", category: finance)
-t6 = Tag.create(name: "Relevé bancaire", category: finance)
-t7 = Tag.create(name: "Bulletin de salaire", category: emploi)
-t8 = Tag.create(name: "Contrat de travail", category: emploi)
-t9 = Tag.create(name: "Carnet de santé", category: medical)
-t10 = Tag.create(name: "Carte vital", category: medical)
-t11 = Tag.create(name: "Justificatif de domicile", category: habitation)
-t12 = Tag.create(name: "Quittance de loyer", category: habitation)
-t13 = Tag.create(name: "Certificat de scolarité", category: education)
-t14 = Tag.create(name: "Diplomes", category: education)
+t1 = Tag.create(name: "Carte d'identité", category: personnel, number_of_uploads: 1)
+t2 = Tag.create(name: "Passeport", category: personnel, number_of_uploads: 1)
+t3 = Tag.create(name: "Permis de conduire", category: auto, number_of_uploads: 1)
+t4 = Tag.create(name: "Carte grise", category: auto, number_of_uploads: 1)
+t5 = Tag.create(name: "RIB", category: finance, number_of_uploads: 1)
+t6 = Tag.create(name: "Relevé bancaire", category: finance, number_of_uploads: 1)
+t7 = Tag.create(name: "Bulletin de salaire", category: emploi, number_of_uploads: 1)
+t8 = Tag.create(name: "Contrat de travail", category: emploi, number_of_uploads: 1)
+t9 = Tag.create(name: "Carnet de santé", category: medical, number_of_uploads: 1)
+t10 = Tag.create(name: "Carte vital", category: medical, number_of_uploads: 1)
+t11 = Tag.create(name: "Justificatif de domicile", category: habitation, number_of_uploads: 1)
+t12 = Tag.create(name: "Quittance de loyer", category: habitation, number_of_uploads: 1)
+t13 = Tag.create(name: "Certificat de scolarité", category: education, number_of_uploads: 1)
+t14 = Tag.create(name: "Diplomes", category: education, number_of_uploads: 1)
 
 puts "14 tags créés"
 puts "-------------"
@@ -100,5 +100,3 @@ Document.create(user: user, tag: t13)
 Document.create(user: user, tag: t14)
 
 puts "14 documents créés"
-
-

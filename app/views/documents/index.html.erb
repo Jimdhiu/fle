@@ -8,7 +8,7 @@
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= category.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title text-center">
-                  <%= category.name %>
+                  <%= category.name %> - <%= category.complete_for?(current_user) %>
               </h4>
             </div>
           </a>
@@ -16,22 +16,31 @@
             <div class="panel-body">
               <div class="panel-group first-child" id="accordion<%= category.id %>" role="tablist" aria-multiselectable="true">
                 <% category.tags.each do |tag| %>
-                  <div class="panel panel-default">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion<%= category.id %>" href="#collapse_tag_<%= tag.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
-                      <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title text-center">
-                          <%= tag.name %>
-                        </h4>
-                      </div>
-                    </a>
-                    <div id="collapse_tag_<%= tag.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                      <div class="panel-body">
-                        <% tag.documents.each do |document| %>
-                          <%= link_to document.id, document_path(document) %>
-                        <% end %>
+                  <% if tag.number_of_uploads < 4 %>
+                    <%= tag.name %> - <%= tag.complete_for?(current_user) %>
+                    <br>
+                    <% current_user.documents.where(tag: tag).each do |document| %>
+                      <%= link_to document.id, document_path(document) %>
+                    <% end %>
+                    <br>
+                  <% else %>
+                    <div class="panel panel-default">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion<%= category.id %>" href="#collapse_tag_<%= tag.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                          <h4 class="panel-title text-center">
+                            <%= tag.name %> - <%= tag.complete_for?(current_user) %>
+                          </h4>
+                        </div>
+                      </a>
+                      <div id="collapse_tag_<%= tag.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                          <% current_user.documents.where(tag: tag).each do |document| %>
+                            <%= link_to document.id, document_path(document) %>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  <% end %>
                 <% end %>
               </div>
             </div>
