@@ -1,5 +1,42 @@
-.drag {
-  width: 400px;
-  height: 200px;
-  background-color: #F4F4F4;
+// .drag {
+//   width: 500px;
+//   height: 200px;
+//   background-color: #9b9b9b;
+//   display: flex;
+//   justify-content: center;
+//   border-style: dashed;
+
+
+//   ul {
+//     list-style-type: none;
+//   }
+// }
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    display: block;
+    background-color: #e2dede;
+    border-style: dashed;
+}
+.fileUpload input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.upload {
+    text-align: center;
+    margin-top: 10px;
+}
+
+ul {
+
 }
