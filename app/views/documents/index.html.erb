@@ -10,10 +10,11 @@
               <h4 class="panel-title text-center">
                   <%= category.name %>
                   <% if category.complete_for?(current_user) %>
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-check presence-icon" aria-hidden="true"></i>
                   <% end %>
-
+                  <span class="pull-right"> <%= category.progression(current_user) %></span>
               </h4>
+
             </div>
           </a>
           <div id="collapse<%= category.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -27,7 +28,7 @@
                         <% current_user.documents.where(tag: tag).each do |document| %>
                           <%= render 'modal', tag: tag, document: document  %>
                           <% if document.expiration_date? %>
-                            <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
+                            <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"> Date de validité dépassée</i>
                           <% end %>
                         <% end %>
                       <% else %>
