@@ -2,12 +2,27 @@
   background: #FFF;
   border-top: 2px solid #F2F5F7;
   width : 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .button-upload{
-  margin-left: 50px;
-  justify-content: space-around;
+  display: flex;
+  justify: space-between;
   padding: 10px;
   padding-left: 10px;
   border: 0 solid #979797;
+}
+
+.btn {
+  margin: 0px 10px;
+}
+
+#search-btn {
+  margin-right: 25px;
+}
+
+#btn-upload {
+  margin-left: 15px;
 }

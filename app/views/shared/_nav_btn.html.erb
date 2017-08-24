@@ -1,6 +1,54 @@
 <div class="op">
   <div class="button-upload">
-    <button type="button" class="btn btn-success"><%= link_to "Upload", new_document_path %></button>
-    <button type="button" class="btn btn-warning">Alert</button>
+    <%= link_to "Upload", new_document_path, class: "btn btn-success", id: "btn-upload" %>
+    <a href="#" class="btn btn-warning">Alert</a>
+  </div>
+  <div class="form-inline" id="the-basics">
+   <%= simple_form_for :search, url: documents_path, :method => :get do |f| %>
+    <%= f.input :tag , input_html: { class: "typeahead" }, placeholder: "Passeport", label: false %>
+  <%= f.submit 'Search', class:"btn btn-primary", id: 'search-btn'%>
+  <% end %>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+
+<script>
+  var substringMatcher = function(strs) {
+    return function findMatches(q, cb) {
+      var matches, substringRegex;
+
+      // an array that will be populated with substring matches
+      matches = [];
+
+      // regex used to determine if a string contains the substring `q`
+      substrRegex = new RegExp(q, 'i');
+
+      // iterate through the pool of strings and for any string that
+      // contains the substring `q`, add it to the `matches` array
+      $.each(strs, function(i, str) {
+        if (substrRegex.test(str)) {
+          matches.push(str);
+        }
+      });
+
+      cb(matches);
+    };
+  };
+
+
+  var states = [ "Carte d'identité", "Passeport", "Permis de conduire", "Carte grise",
+  "RIB", "Relevé bancaire", "Bulletin de salaire", "Contrat de travail", "Carte vital", "Carnet de santé", "Justificatif de domicile", "Quittance de loyer", "Certificat de scolarité", "Diplomes"
+  ];
+
+  $('#the-basics .typeahead').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1
+  },
+  {
+    name: 'states',
+    source: substringMatcher(states)
+  });
+  </script>
+<% end %>
