@@ -5,9 +5,7 @@
         <h1>Uploader des documents</h1>
         </div>
        <%= simple_form_for @document do |d| %>
-        <div class="drag">
-         <%= d.input :photo, as: :attachinary %>
-        </div>
+         <%= d.input :photos, as: :attachinary %>
          <%= d.input :document_date, as: :string, label: "Date d'émission du document", input_html: {id: 'sandbox-container'} %>
          <%= d.input :tag_id, collection: @tags, prompt: "Type de Document"%>
          <%= d.submit class: "text-center btn btn-primary" %>

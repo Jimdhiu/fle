@@ -61,7 +61,7 @@ puts "7 catégories créées"
 puts "-------------------"
 
 t1 = Tag.create(name: "Carte d'identité", category: personnel, validity: 10*365, number_of_uploads: 1)
-t2 = Tag.create(name: "passport", category: personnel, validity: 10*365, number_of_uploads: 1)
+t2 = Tag.create(name: "passeport", category: personnel, validity: 10*365, number_of_uploads: 1)
 t3 = Tag.create(name: "Permis de conduire", category: auto, validity: 10*365, number_of_uploads: 1)
 t4 = Tag.create(name: "Carte grise", category: auto, validity: 10*365, number_of_uploads: 1)
 t5 = Tag.create(name: "RIB", category: finance, validity: 10*365, number_of_uploads: 1)

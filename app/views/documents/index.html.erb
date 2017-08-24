@@ -1,4 +1,4 @@
-<div class="right-column">
+ <div class="right-column">
   <div class="first-block">
     <h1>Find all your data</h1>
     <p>Authorize these app just below to import automatically all your files </p>
@@ -8,7 +8,11 @@
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= category.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title text-center">
-                  <%= category.name %> - <%= category.complete_for?(current_user) %>
+                  <%= category.name %>
+                  <% if category.complete_for?(current_user) %>
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                  <% end %>
+
               </h4>
             </div>
           </a>
@@ -17,20 +21,23 @@
               <div class="panel-group first-child" id="accordion<%= category.id %>" role="tablist" aria-multiselectable="true">
                 <% category.tags.each do |tag| %>
                   <% if tag.number_of_uploads < 4 %>
-                      <%= link_to tag.name, "#", data: { toggle: "modal", target: "#document-show" } %> - <%= tag.complete_for?(current_user) %>
-                    <br>
-                    <% current_user.documents.where(tag: tag).each do |document| %>
-                      <%= render 'modal', document: document  %>
-                      <%= "Absent or expired document" if document.expiration_date? %>
-                
-                    <% end %>
+                      <%= link_to tag.name, "#tag#{tag.id}", data: { toggle: "modal"} %>
+                      <% if tag.complete_for?(current_user) %>
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <% current_user.documents.where(tag: tag).each do |document| %>
+                          <%= render 'modal', tag: tag, document: document  %>
+                          <%= "Absent or expired document" if document.expiration_date? %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to "Ajouter", new_document_path, class: "btn btn-primary btn-xs" %>
+                      <% end %>
                     <br>
                   <% else %>
                     <div class="panel panel-default">
                       <a role="button" data-toggle="collapse" data-parent="#accordion<%= category.id %>" href="#collapse_tag_<%= tag.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
                         <div class="panel-heading" role="tab" id="headingOne">
                           <h4 class="panel-title text-center">
-                              <%= link_to tag.name, "#", data: { toggle: "modal", target: "#document-show" } %> - <%= tag.complete_for?(current_user) %>
+                              <%= link_to tag.name, "#", data: { toggle: "modal", target: "#document" } %> - <%= tag.complete_for?(current_user) %>
                           </h4>
                         </div>
                       </a>

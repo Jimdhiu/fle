@@ -47,7 +47,7 @@ class DocumentsController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:tag_id, :document_date, :photo)
+    params.require(:document).permit(:tag_id, :document_date, photos: [])
   end
 
   def set_document
