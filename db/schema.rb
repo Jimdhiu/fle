@@ -59,16 +59,6 @@ ActiveRecord::Schema.define(version: 20170824102950) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "pros", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "company"
-    t.string   "function"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "requested_documents", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

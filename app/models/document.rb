@@ -1,7 +1,7 @@
 class Document < ApplicationRecord
   belongs_to :user
   belongs_to :tag
-  belongs_to :procedure_file
+  has_many :procedure_file
 
   # validates :photo, presence: true
   validates :document_date, presence: true

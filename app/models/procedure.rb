@@ -1,7 +1,7 @@
 class Procedure < ApplicationRecord
-  belongs_to :pro
-  belongs_to :procedure_file
-  belongs_to :requested_document
+  belongs_to :user
+  has_many :procedure_file
+  has_many :requested_document
 
 
 end
