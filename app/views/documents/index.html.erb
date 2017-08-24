@@ -11,6 +11,8 @@
                   <%= category.name %>
                   <% if category.complete_for?(current_user) %>
                     <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+                  <% else %>
+                    <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
                   <% end %>
                   <span class="pull-right"> <%= category.progression(current_user) %></span>
               </h4>
