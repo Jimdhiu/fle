@@ -5,7 +5,7 @@
         <h1>Uploader des documents</h1>
         </div>
        <%= simple_form_for @document do |d| %>
-           <label class="text-center fileUpload">
+         <label class="text-center fileUpload">
             <span class="upload btn btn-primary">Sélectionner</span>
             <%= d.input :photos, as: :attachinary, label: false, class: "upload" %>
          </label>
