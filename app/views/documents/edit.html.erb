@@ -7,7 +7,7 @@
         <h1>Upload a document</h1>
         </div>
        <%= simple_form_for @document do |d| %>
-         <%= d.input :photo, as: :attachinary %>
+         <%= d.input :photos, as: :attachinary %>
          <%= d.input :document_date, as: :string, label: "Date d'émission du document", input_html: {id: 'sandbox-container'} %>
          <%= d.submit class: "text-center btn btn-primary" %>
        <% end %>
