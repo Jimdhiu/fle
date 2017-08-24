@@ -8,7 +8,7 @@
         <div class="panel panel-default">
 
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= category.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
-            <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-heading category" role="tab" id="headingOne">
               <h4 class="panel-title text-center">
                    <span class="pull-left"> <%= category.icon.html_safe %> </span><%=category.name %>
                   <% if category.complete_for?(current_user) %>
@@ -31,12 +31,16 @@
                   <% if tag.number_of_uploads < 4 %>
                       <%= link_to tag.name, "#tag#{tag.id}", data: { toggle: "modal"} %>
                       <% if tag.complete_for?(current_user) %>
-                        <i class="fa fa-check presence-icon" aria-hidden="true"></i>
-                        <% current_user.documents.where(tag: tag).each do |document| %>
+
+
+                        <% @documents.where(tag: tag).each do |document| %>
                           <%= render 'modal', tag: tag, document: document  %>
                           <% if document.expiration_date? %>
                             <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"> Date de validité dépassée</i>
+                          <% else %>
+                            <i class="fa fa-check presence-icon" aria-hidden="true"></i>
                           <% end %>
+
                         <% end %>
 
                       <% else %>

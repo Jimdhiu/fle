@@ -12,4 +12,5 @@ class Document < ApplicationRecord
   def expiration_date?
     (self.document_date + self.tag.validity) < Date.today
   end
+
 end
