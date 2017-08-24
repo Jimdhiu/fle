@@ -9,6 +9,7 @@
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title text-center">
                   <%= category.name %> - <%= category.complete_for?(current_user) %>
+
               </h4>
             </div>
           </a>
@@ -17,13 +18,16 @@
               <div class="panel-group first-child" id="accordion<%= category.id %>" role="tablist" aria-multiselectable="true">
                 <% category.tags.each do |tag| %>
                   <% if tag.number_of_uploads < 4 %>
-                      <%= link_to tag.name, "#tag#{tag.id}", data: { toggle: "modal"} %> - <%= tag.complete_for?(current_user) %>
-                    <br>
-                    <% current_user.documents.where(tag: tag).each do |document| %>
-                      <%= render 'modal', tag: tag, document: document  %>
-                      <%= "Absent or expired document" if document.expiration_date? %>
-
-                    <% end %>
+                      <%= link_to tag.name, "#tag#{tag.id}", data: { toggle: "modal"} %> -
+                      <% if tag.complete_for?(current_user) %>
+                        <br>
+                        <% current_user.documents.where(tag: tag).each do |document| %>
+                          <%= render 'modal', tag: tag, document: document  %>
+                          <%= "Absent or expired document" if document.expiration_date? %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to "Ajouter", new_document_path %>
+                      <% end %>
                     <br>
                   <% else %>
                     <div class="panel panel-default">
