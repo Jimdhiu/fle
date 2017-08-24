@@ -5,11 +5,13 @@ class DocumentsController < ApplicationController
   def index
     @documents = Document.where(user: current_user)
     @categories = Category.all
+    @selected = "Database"
   end
 
   def new
     @document = Document.new
     @tags = Tag.all
+    @selected = "Upload"
   end
 
   def create
