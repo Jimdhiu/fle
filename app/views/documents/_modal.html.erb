@@ -16,8 +16,11 @@
            <h1> </h1>
 
           <div class="overview">
-          <% if document.photo? %>
-            <%= cl_image_tag document.photo.path, width: 400, height: 400, crop: :fill %>
+          <% if document.photos? %>
+
+            <% document.photos.each do |photo| %>
+                <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+            <% end %>
           <% end %>
           <p>Date du document : <%= document.document_date %></p>
           <p>Expire le : <%= document.document_date + document.tag.validity  %> </p>

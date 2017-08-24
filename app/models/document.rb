@@ -6,7 +6,7 @@ class Document < ApplicationRecord
   validates :document_date, presence: true
   validates :tag, presence: true
 
-  has_attachment :photo
+  has_attachments :photos, maximum: 12
 
 
   def expiration_date?
