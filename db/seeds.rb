@@ -49,13 +49,13 @@ documents = {
   }
 }
 
-personnel = Category.create(name:'Personnel', icon: '<i class="fa fa-user" aria-hidden="true"></i>')
-auto = Category.create(name: "Auto", icon: '<i class="fa fa-car" aria-hidden="true"></i>')
-finance = Category.create(name: "Finance", icon: '<i class="fa fa-university" aria-hidden="true"></i>')
-emploi = Category.create(name: "Emploi", icon: '<i class="fa fa-briefcase" aria-hidden="true"></i>')
-medical = Category.create(name: "Medical", icon: '<i class="fa fa-stethoscope" aria-hidden="true"></i>')
-habitation = Category.create(name: "Habitation", icon: '<i class="fa fa-home" aria-hidden="true"></i>')
-education = Category.create(name: "Education", icon: '<i class="fa fa-graduation-cap" aria-hidden="true"></i>')
+personnel = Category.create(name:'Personnel', icon: 'fa fa-user')
+auto = Category.create(name: "Auto", icon: 'fa fa-car')
+finance = Category.create(name: "Finance", icon: 'fa fa-university')
+emploi = Category.create(name: "Emploi", icon: 'fa fa-briefcase')
+medical = Category.create(name: "Medical", icon: 'fa fa-stethoscope')
+habitation = Category.create(name: "Habitation", icon: 'fa fa-home')
+education = Category.create(name: "Education", icon: 'fa fa-graduation-cap')
 
 puts "7 catégories créées"
 puts "-------------------"
