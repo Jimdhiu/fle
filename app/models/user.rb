@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :documents, dependent: :destroy
+  # has_many :procedure_requests
+  # has_many :pro_procedures, foreign_key: :pro_id, source: :procedure_requests
+
+  has_many :pro_procedures, foreign_key: :pro_id, class_name: "ProcedureRequest"
+  has_many :part_procedures, foreign_key: :part_id, class_name: "ProcedureRequest"
 end
