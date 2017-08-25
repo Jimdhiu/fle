@@ -18,4 +18,5 @@ class Category < ApplicationRecord
     end
     "#{progress} sur #{tags.size}"
   end
+
 end
