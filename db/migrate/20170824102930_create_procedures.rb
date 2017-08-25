@@ -4,6 +4,7 @@ class CreateProcedures < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :status
 
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end
