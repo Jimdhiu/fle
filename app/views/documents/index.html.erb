@@ -10,7 +10,7 @@
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= category.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
             <div class="panel-heading category" role="tab" id="headingOne">
               <h4 class="panel-title text-center">
-                   <span class="pull-left"> <%= category.icon.html_safe %> </span><%=category.name %>
+                   <span class="pull-left"> <i class="<%= category.icon %> " aria-hidden="true"></i></span><%=category.name %>
                   <% if category.complete_for?(current_user) %>
                     <i class="fa fa-check presence-icon" aria-hidden="true"></i>
                   <% else %>
