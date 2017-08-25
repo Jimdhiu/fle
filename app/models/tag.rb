@@ -1,5 +1,6 @@
 class Tag < ApplicationRecord
   has_many :documents
+  has_many :requested_documents
   belongs_to :category
 
   def complete_for?(user)
