@@ -49,27 +49,27 @@ documents = {
   }
 }
 
-personnel = Category.create(name: "Personnel")
-auto = Category.create(name: "Auto")
-finance = Category.create(name: "Finance")
-emploi = Category.create(name: "Emploi")
-medical = Category.create(name: "Medical")
-habitation = Category.create(name: "Habitation")
-education = Category.create(name: "Education")
+personnel = Category.create(name:'Personnel', icon: '<i class="fa fa-user" aria-hidden="true"></i>')
+auto = Category.create(name: "Auto", icon: '<i class="fa fa-car" aria-hidden="true"></i>')
+finance = Category.create(name: "Finance", icon: '<i class="fa fa-university" aria-hidden="true"></i>')
+emploi = Category.create(name: "Emploi", icon: '<i class="fa fa-briefcase" aria-hidden="true"></i>')
+medical = Category.create(name: "Medical", icon: '<i class="fa fa-stethoscope" aria-hidden="true"></i>')
+habitation = Category.create(name: "Habitation", icon: '<i class="fa fa-home" aria-hidden="true"></i>')
+education = Category.create(name: "Education", icon: '<i class="fa fa-graduation-cap" aria-hidden="true"></i>')
 
 puts "7 catégories créées"
 puts "-------------------"
 
 t1 = Tag.create(name: "Carte d'identité", category: personnel, validity: 10*365, number_of_uploads: 1)
-t2 = Tag.create(name: "passeport", category: personnel, validity: 10*365, number_of_uploads: 1)
+t2 = Tag.create(name: "Passeport", category: personnel, validity: 10*365, number_of_uploads: 1)
 t3 = Tag.create(name: "Permis de conduire", category: auto, validity: 10*365, number_of_uploads: 1)
 t4 = Tag.create(name: "Carte grise", category: auto, validity: 10*365, number_of_uploads: 1)
 t5 = Tag.create(name: "RIB", category: finance, validity: 10*365, number_of_uploads: 1)
-t6 = Tag.create(name: "Relevé bancaire", category: finance, validity: 10)
-t7 = Tag.create(name: "Bulletin de salaire", category: emploi, validity: 10*365, number_of_uploads: 1)
+t6 = Tag.create(name: "Relevés bancaire", category: finance, validity: 10)
+t7 = Tag.create(name: "Bulletins de salaire", category: emploi, validity: 10*365, number_of_uploads: 1)
 t8 = Tag.create(name: "Contrat de travail", category: emploi, validity: 10*365, number_of_uploads: 1)
 t9 = Tag.create(name: "Carnet de santé", category: medical, validity: 10*365, number_of_uploads: 1)
-t10 = Tag.create(name: "Carte vital", category: medical, validity: 5*365, number_of_uploads: 1)
+t10 = Tag.create(name: "Carte vitale", category: medical, validity: 5*365, number_of_uploads: 1)
 t11 = Tag.create(name: "Justificatif de domicile", category: habitation, validity: 60, number_of_uploads: 1)
 t12 = Tag.create(name: "Quittance de loyer", category: habitation, validity: 10*365, number_of_uploads: 1)
 t13 = Tag.create(name: "Certificat de scolarité", category: education, validity: 10*365, number_of_uploads: 1)
