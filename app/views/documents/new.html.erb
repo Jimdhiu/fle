@@ -4,15 +4,19 @@
        <div class="text-center">
         <h1>Uploader des documents</h1>
         </div>
-       <%= simple_form_for @document do |d| %>
+        <div style="padding: 20px;">
+        <%= simple_form_for @document do |d| %>
          <label class="text-center fileUpload">
             <span class="upload btn btn-primary">Sélectionner</span>
             <%= d.input :photos, as: :attachinary, label: false, class: "upload" %>
          </label>
          <%= d.input :document_date, as: :string, label: "Date d'émission du document", input_html: {id: 'sandbox-container'} %>
          <%= d.input :tag_id, collection: @tags, prompt: "Type de Document"%>
-         <%= d.submit class: "text-center btn btn-primary" %>
+         <%= d.submit class: "text-center btn btn-primary form-control" %>
+         <br/>
        <% end %>
+        </div>
+
      </div>
  </div>
 </div>

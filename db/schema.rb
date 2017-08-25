@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170825134246) do
     t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
   end
 
+
   create_table "procedure_documents", force: :cascade do |t|
     t.integer  "procedure_request_id"
     t.integer  "document_id"
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 20170825134246) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 
   create_table "requested_tags", force: :cascade do |t|
     t.integer  "procedure_id"
