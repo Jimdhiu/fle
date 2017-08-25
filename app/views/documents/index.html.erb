@@ -60,7 +60,7 @@
                       <div id="collapse_tag_<%= tag.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
                           <% current_user.documents.where(tag: tag).each do |document| %>
-                            <%= render 'modal', document: document  %>
+                            <%= render 'modal', tag: tag, document: document  %>
                           <% end %>
                         </div>
                       </div>
