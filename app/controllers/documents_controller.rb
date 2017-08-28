@@ -43,6 +43,7 @@ class DocumentsController < ApplicationController
   def destroy
 
     @document.destroy
+    flash[:notice] = "Votre document a bien été supprimé"
     redirect_to root_path
   end
 

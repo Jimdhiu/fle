@@ -19,10 +19,10 @@
           <% if document.photos? %>
 
             <% document.photos.each do |photo| %>
-                <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+                <%= cl_image_tag photo.path, crop: :fill %>
             <% end %>
           <% end %>
-          <p>Date du document : <%= document.document_date %></p>
+         <!--  <p>Date du document : <%= document.document_date %></p> -->
           <p>Expire le : <%= document.document_date + document.tag.validity  %> </p>
 
 
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <%= link_to 'Delete', "#", method: :delete , class: "btn btn-danger", data: { dismiss: "modal"}, type: "button"%>
+        <%= link_to 'Delete', document_path(document), method: :delete , class: "btn btn-danger", data: { dismiss: "modal"}%>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
         <%= link_to 'Edit', edit_document_path(document), class: "btn btn-primary" %>
