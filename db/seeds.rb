@@ -7,7 +7,7 @@
 #créer un user
 #créer des documents
 
-
+RequestedTag.destroy_all
 Document.destroy_all
 Tag.destroy_all
 Category.destroy_all
@@ -67,7 +67,7 @@ puts "-------------------"
 
 identity_card = Tag.create(name: "Carte d'identité", category: personnel, validity: 10 * 365, number_of_uploads: 2)
 family_book = Tag.create(name: "Livret de famille", category: personnel, validity: 100 * 365, number_of_uploads: 2)
-identity_card = Tag.create(name: "Attestation de responsabilité civile", category: personnel, validity: 1 * 365, number_of_uploads: 2)
+responsability = Tag.create(name: "Attestation de responsabilité civile", category: personnel, validity: 1 * 365, number_of_uploads: 2)
 passport = Tag.create(name: "Passeport", category: personnel, validity: 10 * 365, number_of_uploads: 1)
 
 driver_license = Tag.create(name: "Permis de conduire", category: auto, validity: 15 * 365, number_of_uploads: 2)
@@ -95,7 +95,7 @@ ordonnance = Tag.create(name: "Ordonnances", category: medical, validity: 1 * 36
 proof_address = Tag.create(name: "Justificatif de domicile", category: habitation, validity: 90, number_of_uploads: 1)
 rent_receipt = Tag.create(name: "Quittance de loyer", category: habitation, validity: 365, number_of_uploads: 3)
 electric_bill = Tag.create(name: "Factures &lectricité", category: habitation, validity: 365, number_of_uploads: 12)
-lease = Tag.create(name: "Bail", category: habitation, validity: 365, number_of_uploads: 3)
+lease = Tag.create(name: "Compromis de vente", category: habitation, validity: 365, number_of_uploads: 3)
 
 school_certificate = Tag.create(name: "Certificat de scolarité", category: education, validity: 10*365, number_of_uploads: 1)
 diplomas = Tag.create(name: "Diplomes", category: education, validity: 10*365, number_of_uploads: 5)
@@ -115,9 +115,46 @@ puts "-------------"
 
 
 
-Document.create(user: jimmy, tag: identity_card, document_date: Date.new(2011,11,23))
-Document.create(user: jimmy, tag: passport, document_date: Date.new(2007,13,05))
+Document.create(user: jimmy, tag: identity_card, document_date: Date.new(2015,11,23), photo_urls: ["http://img.over-blog-kiwi.com/300x300/0/55/64/82/201308/ob_b58de8_photo-633881098554843750-2-1.jpg"])
+Document.create(user: jimmy, tag: passport, document_date: Date.new(2007,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+
+puts " 1 carte d'identité créée"
+puts "-------------------------"
+puts " 1 passport créé"
+puts "----------------"
+
+mortgage_procedure = Procedure.create(name: "Crédit immobilier")
+credit_procedure = Procedure.create(name: "Crédit à la consommation")
+bank_account = Procedure.create(name: "Ouverture d'un compte bancaire")
+
+puts "3 procedures créées"
+puts "-------------------"
+
+RequestedTag.create(procedure: mortgage_procedure, tag: identity_card)
+RequestedTag.create(procedure: mortgage_procedure, tag: tax_notice)
+RequestedTag.create(procedure: mortgage_procedure, tag: job)
+RequestedTag.create(procedure: mortgage_procedure, tag: lease)
+RequestedTag.create(procedure: mortgage_procedure, tag: proof_address)
+RequestedTag.create(procedure: mortgage_procedure, tag: bank_statement)
+
+puts "Documents requis pour credit immo créés"
+puts "----------------"
+
+RequestedTag.create(procedure: credit_procedure, tag: identity_card)
+RequestedTag.create(procedure: credit_procedure, tag: rib)
+RequestedTag.create(procedure: credit_procedure, tag: electric_bill)
+RequestedTag.create(procedure: credit_procedure, tag: job)
+
+puts "Documents requis pour crédit à la consommation créés"
+puts "----------------"
+
+RequestedTag.create(procedure: bank_account, tag: identity_card)
+RequestedTag.create(procedure: bank_account, tag: proof_address)
+
+puts "Documents requis pour l'ouverture d'un compte bancaire"
+puts ""
+
+ProcedureRequest.create(part: jimmy, pro: jorge, procedure: mortgage_procedure)
 
 
 
-puts "14 documents créés"
