@@ -17,42 +17,7 @@ User.destroy_all
 
 
 categories = ["Personel", "Auto", "Finance", "Emploi", "Medical", "Habitation", "Education"]
-tags =
 
-
-documents = {
-  "Personel" => {
-    identity: "",
-    passport: "Passeport",
-
-  },
-  "Auto" => {
-    driver_license: "Permis de conduire",
-    gray_card: "Carte grise",
-
-  },
-  "Finance" => {
-    rib: "RIB",
-    bank_statement: "Relevé bancaire",
-  },
-  "Emploi" => {
-    pay_slip: "Bulletin de salaire",
-    employment_contract: "Contrat de travail"
-  },
-  "Medical" => {
-    vital_card: "Carte vital",
-    health_book: "Carnet de santé"
-  },
-  "Habitation" => {
-    proof_address: "Justificatif de domicile",
-    rent_receipt: "Quittance de loyer"
-  },
-  "Education" => {
-    school_certificate: "Certificat de scolarité",
-    diplomas: "Diplomes"
-  }
-}
-credit_immo = Procedure.create()
 
 personnel = Category.create(name:'Personnel', icon: 'fa fa-user')
 auto = Category.create(name: "Auto", icon: 'fa fa-car')
