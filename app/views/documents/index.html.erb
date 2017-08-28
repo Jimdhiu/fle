@@ -1,7 +1,7 @@
  <div class="right-column">
   <div class="first-block">
     <h1>Mes documents</h1>
-    <!-- <p>Authorize these app just below to import automatically all your files </p> -->
+
     <div class="panel-group first-child" id="accordion" role="tablist" aria-multiselectable="true">
 
       <% @categories.each do |category| %>
@@ -31,7 +31,7 @@
               <div class="panel-group first-child" id="accordion<%= category.id %>" role="tablist" aria-multiselectable="true">
 
                 <% category.tags.each do |tag| %>
-                  <% if tag.number_of_uploads < 4 %>
+                  <% if tag.number_of_uploads < 1 %>
                       <%= link_to tag.name, "#tag#{tag.id}", data: { toggle: "modal"} %>
                       <% if tag.complete_for?(current_user) %>
 
@@ -56,7 +56,21 @@
                       <a role="button" data-toggle="collapse" data-parent="#accordion<%= category.id %>" href="#collapse_tag_<%= tag.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
                         <div class="panel-heading" role="tab" id="headingOne">
                           <h4 class="panel-title text-center">
-                              <%= link_to tag.name, "#", data: { toggle: "modal", target: "#document" } %> - <%= tag.complete_for?(current_user) %>
+                              <%= link_to tag.name, "#", data: { toggle: "modal", target: "#document" } %>
+                                <% if tag.complete_for?(current_user) %>
+                                  <% @documents.where(tag: tag).each do |document| %>
+                                    <%= render 'modal', tag: tag, document: document  %>
+                                    <% if document.expired? %>
+                                      <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"> Date de validité dépassée</i>
+                                    <% else %>
+                                      <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+                                    <% end %>
+
+                                  <% end %>
+
+                                <% else %>
+                                  <%= link_to "Ajouter", new_document_path(document: { tag_id: tag.id }), class: "btn btn-primary btn-xs" %>
+                                <% end %>
                           </h4>
                         </div>
                       </a>

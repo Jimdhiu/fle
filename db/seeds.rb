@@ -31,9 +31,10 @@ puts "7 catégories créées"
 puts "-------------------"
 
 identity_card = Tag.create(name: "Carte d'identité", category: personnel, validity: 10 * 365, number_of_uploads: 2)
+passport = Tag.create(name: "Passeport", category: personnel, validity: 10 * 365, number_of_uploads: 1)
 family_book = Tag.create(name: "Livret de famille", category: personnel, validity: 100 * 365, number_of_uploads: 2)
 responsability = Tag.create(name: "Attestation de responsabilité civile", category: personnel, validity: 1 * 365, number_of_uploads: 2)
-passport = Tag.create(name: "Passeport", category: personnel, validity: 10 * 365, number_of_uploads: 1)
+
 
 driver_license = Tag.create(name: "Permis de conduire", category: auto, validity: 15 * 365, number_of_uploads: 2)
 gray_card = Tag.create(name: "Carte grise", category: auto, validity: 10 * 365, number_of_uploads: 1)
