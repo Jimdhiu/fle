@@ -11,7 +11,19 @@
             <div class="panel-heading category" role="tab" id="headingOne">
               <h4 class="panel-title text-center">
                    <span class="pull-left"> <i class="<%= category.icon %> " aria-hidden="true"></i></span><%=category.name %>
-                  <% if category.complete_for?(current_user) %>
+
+                   <%   status = [] %>
+                   <% category.tags.each do |tag| %>
+                     <% tag.documents.each do |document| %>
+                      <% status << document.expiration_date? %>
+                    <% end %>
+                   <% end %>
+
+                   <% valid = status.include? true %>
+
+
+                  <% if category.complete_for?(current_user) && valid == false  %>
+
                     <i class="fa fa-check presence-icon" aria-hidden="true"></i>
                   <% else %>
                     <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
