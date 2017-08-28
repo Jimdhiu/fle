@@ -100,28 +100,24 @@ lease = Tag.create(name: "Bail", category: habitation, validity: 365, number_of_
 school_certificate = Tag.create(name: "Certificat de scolarité", category: education, validity: 10*365, number_of_uploads: 1)
 diplomas = Tag.create(name: "Diplomes", category: education, validity: 10*365, number_of_uploads: 5)
 
-puts "14 tags créés"
+puts "28 tags créés"
 puts "-------------"
 
-user = User.create(email: "test@gmail.com", password: "password")
+jimmy = User.create(first_name: "Jimmy", last_name: "Dhiu",email: "dhiu.jim@gmail.com", password: "password", address: "160 cours gambetta 33000 Bordeaux")
 
-puts "1 user créé !"
+puts "1 Jimmy créé ! (client particulier)"
+puts "-------------"
+
+jorge = User.create(first_name: "Jorge", last_name: "Ruivinho",email: "djorge.ruivinho@me.com", password: "password", address: "35 rue de la paix 75000 Paris", company: "BNP", function: "Directeur des opérations financières", status: "pro")
+
+puts "1 Jorge créé ! (professionnel)"
 puts "-------------"
 
 
-Document.create(user: user, tag: t1, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t2, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t3, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t4, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t5, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t6, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t7, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t8, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t9, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t10, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t11, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t12, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t13, document_date: Date.today - rand(10..10000))
-Document.create(user: user, tag: t14, document_date: Date.today - rand(10..10000))
+
+Document.create(user: jimmy, tag: identity_card, document_date: Date.new(2011,11,23))
+Document.create(user: jimmy, tag: passport, document_date: Date.new(2007,13,05))
+
+
 
 puts "14 documents créés"
