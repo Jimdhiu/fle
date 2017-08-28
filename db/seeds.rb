@@ -89,8 +89,14 @@ criminal_record = Tag.create(name: "Casier juficiaire", category: emploi, validi
 
 health_book = Tag.create(name: "Carnet de santé", category: medical, validity: 10*365, number_of_uploads: 30)
 vital_card = Tag.create(name: "Carte vitale", category: medical, validity: 5*365, number_of_uploads: 1)
-proof_address = Tag.create(name: "Justificatif de domicile", category: habitation, validity: 60, number_of_uploads: 1)
-rent_receipt = Tag.create(name: "Quittance de loyer", category: habitation, validity: 10*365, number_of_uploads: 3)
+mutuelle_notice = Tag.create(name: "Attestation de mutuelle", category: medical, validity: 1 * 365, number_of_uploads: 1)
+ordonnance = Tag.create(name: "Ordonnances", category: medical, validity: 1 * 365, number_of_uploads: 1)
+
+proof_address = Tag.create(name: "Justificatif de domicile", category: habitation, validity: 90, number_of_uploads: 1)
+rent_receipt = Tag.create(name: "Quittance de loyer", category: habitation, validity: 365, number_of_uploads: 3)
+electric_bill = Tag.create(name: "Factures &lectricité", category: habitation, validity: 365, number_of_uploads: 12)
+lease = Tag.create(name: "Bail", category: habitation, validity: 365, number_of_uploads: 3)
+
 school_certificate = Tag.create(name: "Certificat de scolarité", category: education, validity: 10*365, number_of_uploads: 1)
 diplomas = Tag.create(name: "Diplomes", category: education, validity: 10*365, number_of_uploads: 5)
 
