@@ -9,7 +9,7 @@ class Document < ApplicationRecord
   has_attachments :photos, maximum: 12
 
 
-  def expiration_date?
+  def expired?
     (self.document_date + self.tag.validity) < Date.today
   end
 

@@ -9,7 +9,7 @@ class DocumentsController < ApplicationController
   end
 
   def new
-    @document = Document.new
+    @document = Document.new(tag_id: params.dig(:document, :tag_id))
     @tags = Tag.all
     @selected = "Upload"
   end
