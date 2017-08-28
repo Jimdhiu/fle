@@ -12,17 +12,8 @@
               <h4 class="panel-title text-center">
                    <span class="pull-left"> <i class="<%= category.icon %> " aria-hidden="true"></i></span><%=category.name %>
 
-                   <%   status = [] %>
-                   <% category.tags.each do |tag| %>
-                     <% tag.documents.each do |document| %>
-                      <% status << document.expiration_date? %>
-                    <% end %>
-                   <% end %>
 
-                   <% valid = status.include? true %>
-
-
-                  <% if category.complete_for?(current_user) && valid == false  %>
+                  <% if category.valid_for?(current_user) %>
 
                     <i class="fa fa-check presence-icon" aria-hidden="true"></i>
                   <% else %>
@@ -47,7 +38,7 @@
 
                         <% @documents.where(tag: tag).each do |document| %>
                           <%= render 'modal', tag: tag, document: document  %>
-                          <% if document.expiration_date? %>
+                          <% if document.expired? %>
                             <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"> Date de validité dépassée</i>
                           <% else %>
                             <i class="fa fa-check presence-icon" aria-hidden="true"></i>
@@ -56,7 +47,7 @@
                         <% end %>
 
                       <% else %>
-                        <%= link_to "Ajouter", new_document_path, class: "btn btn-primary btn-xs" %>
+                        <%= link_to "Ajouter", new_document_path(document: { tag_id: tag.id }), class: "btn btn-primary btn-xs" %>
                       <% end %>
                     <br>
 

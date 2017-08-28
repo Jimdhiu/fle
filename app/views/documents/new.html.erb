@@ -11,7 +11,7 @@
             <%= d.input :photos, as: :attachinary, label: false, class: "upload" %>
          </label>
          <%= d.input :document_date, as: :string, label: "Date d'émission du document", input_html: {id: 'sandbox-container'} %>
-         <%= d.input :tag_id, collection: @tags, prompt: "Type de Document"%>
+         <%= d.association :tag, prompt: "Type de Document", as: (:hidden if @document.tag) %>
          <%= d.submit class: "text-center btn btn-primary form-control" %>
          <br/>
        <% end %>
