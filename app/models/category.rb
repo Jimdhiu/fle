@@ -1,12 +1,20 @@
 class Category < ApplicationRecord
   has_many :tags
 
-  def complete_for?(user)
+  def valid_for?(user)
     # bool = true
     # tags.each { |tag| bool = bool && tag.complete_for?(user) }
     # bool
 
-    tags.reduce(true) { |bool, tag| bool = bool && tag.complete_for?(user) }
+    complete = tags.reduce(true) { |bool, tag| bool = bool && tag.complete_for?(user) }
+
+    status = []
+    self.tags.each do |tag|
+      status << tag.expired_for?(user)
+    end
+    expired = status.include? true
+
+    return complete && !expired
   end
 
   def progression(user) # number of tags upload in the category
@@ -16,7 +24,7 @@ class Category < ApplicationRecord
         progress += 1
       end
     end
-    "#{progress} sur #{tags.size}"
+    "#{progress} / #{tags.size}"
   end
 
 end
