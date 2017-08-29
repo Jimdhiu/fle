@@ -3,5 +3,6 @@ $('#sandbox-container').datepicker({
     startView: 2,
     maxViewMode: 2,
     language: "fr",
-    autoclose: true
+    autoclose: true,
+    endDate: "today"
 });

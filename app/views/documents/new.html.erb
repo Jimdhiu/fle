@@ -1,22 +1,18 @@
-<div class="container">
-  <div class="row">
-     <div class="col-xs-12 col-sm-6 col-sm-offset-3 form">
-       <div class="text-center">
-        <h1>Uploader des documents</h1>
-        </div>
-        <div style="padding: 20px;">
-        <%= simple_form_for @document do |d| %>
-         <label class="text-center fileUpload">
-            <span class="upload btn btn-primary">Sélectionner</span>
-            <%= d.input :photos, as: :attachinary, label: false, class: "upload" %>
-         </label>
-         <%= d.input :document_date, as: :string, label: "Date d'émission du document", input_html: {id: 'sandbox-container'} %>
-         <%= d.association :tag, prompt: "Type de Document", as: (:hidden if @document.tag) %>
-         <%= d.submit class: "text-center btn btn-primary form-control" %>
-         <br/>
-       <% end %>
-        </div>
-
-     </div>
- </div>
+<div class="right-column">
+  <div class="first-block">
+    <div class="text-center">
+    <h2>Télécharger des documents</h2>
+    </div>
+    <div class="form-for">
+      <%= simple_form_for @document do |d| %>
+       <label class="text-center fileUpload">
+          <span class="upload btn btn-primary">Sélectionner</span>
+          <%= d.input :photos, as: :attachinary, label: false, class: "upload" %>
+       </label>
+       <%= d.input :document_date, as: :string, label: "Date d'émission du document", input_html: {id: 'sandbox-container'} %>
+       <%= d.association :tag, prompt: "Type de Document", as: (:hidden if @document.tag) %>
+       <%= d.submit class: "btn btn-primary" %>
+     <% end %>
+    </div>
+  </div>
 </div>
