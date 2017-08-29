@@ -1,2 +1,55 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://static.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg');">
+    <div class="banner-content">
+      <h1>FileOn</h1>
+      <p>Réaliser ses démarches administratives n'a jamais été aussi simple</p>
+      <!-- <a class="btn btn-primary btn-lg">Inscrivez-vous</a>
+      <a class="btn btn-success btn-lg">Connectez-vous</a> -->
+      <%= link_to 'Inscrivez-vous', new_user_registration_path, class: "btn btn-primary btn-lg" %>
+      <%= link_to 'Connectez-vous', new_user_session_path, class: "btn btn-success btn-lg"%>
+
+    </div>
+  </div>
+
+<!-- <div class="block">
+  <h1 class="headtitl"> FONCTIONNALITÉS </h1>
+  <h2 class="headtitl.subtitle-features text-center"> CE QUE NOUS FAISONS POUR VOUS</h2>
+</div> -->
+<div class="row-home">
+  <div class="col-xs-12 col-md-offset-1 text-center">
+    <h2>Upload</h2>
+    <p>Les choses simples sont les meilleurs <br> FileOn vous propose de disposer d'une base de donnée en ligne avec tous vos documents nécessaires aux admnistrations.</p>
+  </div>
+  <div class="col-xs-12 col-md-offset-1 text-center">
+    <img alt="Upload" class="img-responsive services-iphone" src="http://www.kcjmngo.com/wp-content/uploads/2016/01/upload.png">
+  </div>
+</div>
+
+<div class="row-send">
+  <div class="col-sm-12 col-md-offset-1 text-center">
+    <img alt="Upload" src="http://filessend.yolasite.com/resources/file_send.png">
+  </div>
+  <div class="col-xs-12 col-md-offset-1 text-center">
+    <h2>Transferer</h2>
+    <p>Les choses simples sont les meilleurs <br> FileOn vous propose de disposer d'une base de donnée en ligne avec tous vos documents nécessaires aux admnistrations.</p>
+  </div>
+</div>
+
+<div class="row-security">
+  <div class="col-xs-12 col-md-offset-1 text-center">
+    <h2>Sécurité</h2>
+    <p>Les choses simples sont les meilleurs <br> FileOn vous propose de disposer d'une base de donnée en ligne avec tous vos documents nécessaires aux admnistrations.</p>
+  </div>
+  <div class="col-xs-12 col-md-offset-1 text-center">
+    <img alt="Upload" src="https://www.mimecast.com/globalassets/sitev3/icons/parent-colour-icons/parent-icon-secure-messaging-368x327.png">
+  </div>
+</div>
+
+<div class="logo_bar_presse text-center">
+  <br>
+  <h2>On parle de nous</h2>
+  <img src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/1692/s300/le-wagon-logo.png" class="logo_img" alt="logo_le_wagon">
+  <img src="http://1001startups.fr/wp-content/uploads/2016/02/Logo-1001startups-1170x427.png" class="logo_img" alt="logo_1001startup">
+  <img src="https://upload.wikimedia.org/wikipedia/fr/0/0d/BFM_Business_logo_2010.png" class="logo_img" alt="logo_bfm">
+  <img src="https://www.challenges.fr/img/cha/logo.svg" class="logo_img" alt="logo_challenges">
+  <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/b/bb/Les_echos_%28logo%29.svg/1024px-Les_echos_%28logo%29.svg.png" class="logo_img" alt="logo_les_echos">
+</div>

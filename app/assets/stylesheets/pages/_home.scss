@@ -1,68 +1,104 @@
-// Specific CSS for your home-page
-.page-container {
+.banner {
+  color: white;
+  text-align: center;
   height: 100vh;
-  background-color: red;
-  width: 100%;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-family: 'Lobster', cursive;
+  font-weight: bold;
+  font-size: 80px;
+}
+.banner p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+  margin-bottom: 30px;
 }
 
-.left-column {
-  height: 100%;
-  width: 20%;
-  background-color: #FFF;
+.block {
+  background-size: contain;
+  background-color: #dae4f3;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 300px;
+  color: white;
 }
 
-
-
-//
-//   .navbar {
-//       height : 10%;
-//       width : 80%;
-//       background-color: yellow;
-//   }
-// }
-
-//
-// .wrapper {
-//   width: 100%;
-//   height: 100%;
-// }
-//
-// .wrapper p {
-//   padding: 10px;
-// }
-//
-
-
-// #navigation  {
-// 	font-weight: bold;
-// 	text-decoration: none;
-// 	color: #FFFFFF;
-//   width: 100%;
-//   height: 100%;
-// }
-//
-// #navigation #en-cours a {
-// 	color: #1FD4F2;
-//   width: 100%;
-//   height: 5px;
-//   // padding-left: 50px;
-//   // padding-right: 50px;
-// }
-
-
-.first-child {
-  position: relative;
-  width: 90%;
-  border-radius: 8px;
-  font-size: 21px;
-  color: #132457;
-  padding: 12px;
-  margin-bottom: 10px;
+.headtitl {
+    float: none;
+    clear: none;
+    font-family: 'Sf ui display', sans-serif;
+    color: #132457;
+    font-size: 80px;
+    line-height: 124px;
+    text-align: center;
+    letter-spacing: -2px;
+    margin-top: 0px;
 }
 
-@media (max-width: 768px) {
-  .right-column {
+.headtitl.subtitle-features {
+    margin-top: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 0px;
+    clear: left;
+    color: #red;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    margin-bottom: -10px !important;
+}
+
+// .headtitl.subtitle-features h2 {
+//   text-align: center !important;
+// }
+
+.row-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row-send {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #dae4f3;
+}
+
+.row-security {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo_bar_presse {
+    left: 0;
+    right: 0;
+    display: block;
+    text-align: center;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 800!important;
     width: 100%;
-  }
+    min-width: 290px;
+    margin-left: 0;
+    margin-right: 0;
+    background: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-sizing: border-box;
+}
+
+.logo_img {
+    margin: 5px 18px 10px;
+    width: 140px;
+    height: auto;
 }
