@@ -1,0 +1,35 @@
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <% @procedure_requests.each do |procedure_request| %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="heading-<%= procedure_request.id %>">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-<%= procedure_request.id %>" aria-expanded="true" aria-controls="collapse-<%= procedure_request.id %>">
+            <div><%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %></div>
+          </a>
+        </h4>
+      </div>
+
+      <div id="collapse-<%= procedure_request.id %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-<%= procedure_request.id %>">
+        <div class="panel-body">
+          <ul>
+            <% procedure_request.procedure.tags.each do |tag| %>
+              <li>
+                <%= tag.name %>
+                <div>
+                  <%= procedure_request.part.documents.valid_date(tag).count %> valid
+                </div>
+                <div>
+                  <%= procedure_request.part.documents.unvalid_date(tag).count %> unvalid
+                </div>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
