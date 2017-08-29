@@ -1,6 +1,6 @@
 class Pro::ProcedureRequestsController < ApplicationController
   def index
-    @procedure_requests = current_user.pro_procedures
+    @procedure_requests = current_user.pro_procedures.all
   end
 
   def show

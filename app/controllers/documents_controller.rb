@@ -57,5 +57,3 @@ class DocumentsController < ApplicationController
   end
 
 end
-
-
