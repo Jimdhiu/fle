@@ -1,3 +1,5 @@
+require "open-uri"
+
 class DocumentsController < ApplicationController
 
   before_action :set_document, only: [:show, :edit, :update, :destroy]
@@ -6,6 +8,7 @@ class DocumentsController < ApplicationController
     @documents = Document.where(user: current_user)
     @categories = Category.all
     @selected = "Database"
+
   end
 
   def new
@@ -41,9 +44,14 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-
     @document.destroy
+    flash[:notice] = "Votre document a bien été supprimé"
     redirect_to root_path
+  end
+
+  def download
+    data = open("http://res.cloudinary.com/dlizgzwic/image/upload/#{Document.find(params[:id]).photos.first.path}")
+    send_data data.read, filename: "doc.#{Document.find(params[:id]).photos.first.format}", type: "application/#{Document.find(params[:id]).photos.first.format}"
   end
 
   private

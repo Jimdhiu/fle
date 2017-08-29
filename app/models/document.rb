@@ -7,7 +7,7 @@ class Document < ApplicationRecord
   validates :tag, presence: true
   delegate :validity, to: :tag, allow_nil: true
 
-  has_attachments :photos, maximum: 50#, maximum: tag.number_of_uploads
+  has_attachments :photos, maximum: 12#, maximum: tag.number_of_uploads
 
 
   def limit_date
