@@ -6,6 +6,7 @@ class DocumentsController < ApplicationController
     @documents = Document.where(user: current_user)
     @categories = Category.all
     @selected = "Database"
+
   end
 
   def new
