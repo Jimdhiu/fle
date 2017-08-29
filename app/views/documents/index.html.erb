@@ -74,15 +74,10 @@
 
                                 <% if tag.complete_for?(current_user) %>
 
-                                  <% @documents.where(tag: tag).each do |document| %>
-
-                                    <%= render 'modal', tag: tag, document: document  %>
-                                    <% if document.expired? %>
-                                      <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"> Date de validité dépassée</i>
-                                    <% else %>
-                                      <i class="fa fa-check presence-icon" aria-hidden="true"></i>
-                                    <% end %>
-
+                                  <% if check_documents_in_tag_expired?(@documents, tag)%>
+                                    <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"> Date de validité dépassée</i>
+                                  <% else %>
+                                    <i class="fa fa-check presence-icon" aria-hidden="true"></i>
                                   <% end %>
 
                                 <% else %>
