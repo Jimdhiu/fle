@@ -30,40 +30,44 @@ education = Category.create(name: "Education", icon: 'fa fa-graduation-cap')
 puts "7 catégories créées"
 puts "-------------------"
 
-identity_card = Tag.create(name: "Carte d'identité", category: personnel, validity: 10 * 365, number_of_uploads: 2)
-family_book = Tag.create(name: "Livret de famille", category: personnel, validity: 100 * 365, number_of_uploads: 2)
-responsability = Tag.create(name: "Attestation de responsabilité civile", category: personnel, validity: 1 * 365, number_of_uploads: 2)
+identity_card = Tag.create(name: "Carte d'identité", category: personnel, validity: 10 * 365, number_of_uploads: 1)
 passport = Tag.create(name: "Passeport", category: personnel, validity: 10 * 365, number_of_uploads: 1)
+family_book = Tag.create(name: "Livret de famille", category: personnel, validity: 100 * 365, number_of_uploads: 1)
+responsability = Tag.create(name: "Attestation de responsabilité civile", category: personnel, validity: 1 * 365, number_of_uploads: 1)
 
-driver_license = Tag.create(name: "Permis de conduire", category: auto, validity: 15 * 365, number_of_uploads: 2)
+
+driver_license = Tag.create(name: "Permis de conduire", category: auto, validity: 15 * 365, number_of_uploads: 1)
 gray_card = Tag.create(name: "Carte grise", category: auto, validity: 10 * 365, number_of_uploads: 1)
 insurance = Tag.create(name: "Attestation d'assurance", category: auto, validity: 10 * 365, number_of_uploads: 1)
 ct = Tag.create(name: "Controle technique", category: auto, validity: 2 * 365, number_of_uploads: 1)
 
-rib = Tag.create(name: "RIB", category: finance, validity: 10 * 365, number_of_uploads: 1)
 bank_statement = Tag.create(name: "Relevés bancaire", category: finance, validity: 5 * 365, number_of_uploads: 12)
-tax_notice = Tag.create(name: "Avis d'imposition", category: finance, validity: 3 * 365, number_of_uploads: 3)
-home_tax = Tag.create(name: "Taxe d'habitation", category: finance, validity: 1 * 365, number_of_uploads: 10)
-life_insurance = Tag.create(name: "Contrat d'assurance vie", category: finance, validity: 10 * 365, number_of_uploads: 10)
-mortgage = Tag.create(name: "Contrat de crédit immobilier", category: finance, validity: 2 * 365, number_of_uploads: 20)
+rib = Tag.create(name: "RIB", category: finance, validity: 10 * 365, number_of_uploads: 1)
+tax_notice = Tag.create(name: "Avis d'imposition", category: finance, validity: 3 * 365, number_of_uploads: 1)
+home_tax = Tag.create(name: "Taxe d'habitation", category: finance, validity: 1 * 365, number_of_uploads: 1)
+life_insurance = Tag.create(name: "Contrat d'assurance vie", category: finance, validity: 10 * 365, number_of_uploads: 1)
+mortgage = Tag.create(name: "Contrat de crédit immobilier", category: finance, validity: 2 * 365, number_of_uploads: 1)
 
 job = Tag.create(name: "Bulletins de salaire", category: emploi, validity: 1 * 365, number_of_uploads: 12)
-employment_contract = Tag.create(name: "Contrat de travail", category: emploi, validity: 10 * 365, number_of_uploads: 10)
+employment_contract = Tag.create(name: "Contrat de travail", category: emploi, validity: 10 * 365, number_of_uploads: 1)
 employment_notice = Tag.create(name: "Attestation d'embauche", category: emploi, validity: 10 * 365, number_of_uploads: 1)
 criminal_record = Tag.create(name: "Casier juficiaire", category: emploi, validity: 90, number_of_uploads: 1)
 
-health_book = Tag.create(name: "Carnet de santé", category: medical, validity: 10*365, number_of_uploads: 30)
+ordonnance = Tag.create(name: "Ordonnances", category: medical, validity: 1 * 365, number_of_uploads: 10)
+health_book = Tag.create(name: "Carnet de santé", category: medical, validity: 10*365, number_of_uploads: 1)
 vital_card = Tag.create(name: "Carte vitale", category: medical, validity: 5*365, number_of_uploads: 1)
 mutuelle_notice = Tag.create(name: "Attestation de mutuelle", category: medical, validity: 1 * 365, number_of_uploads: 1)
-ordonnance = Tag.create(name: "Ordonnances", category: medical, validity: 1 * 365, number_of_uploads: 1)
 
-proof_address = Tag.create(name: "Justificatif de domicile", category: habitation, validity: 90, number_of_uploads: 1)
-rent_receipt = Tag.create(name: "Quittance de loyer", category: habitation, validity: 365, number_of_uploads: 3)
-electric_bill = Tag.create(name: "Factures &lectricité", category: habitation, validity: 365, number_of_uploads: 12)
+
+
+rent_receipt = Tag.create(name: "Quittance de loyer", category: habitation, validity: 365, number_of_uploads: 6)
+electric_bill = Tag.create(name: "Factures &lectricité", category: habitation, validity: 365, number_of_uploads: 3)
 lease = Tag.create(name: "Compromis de vente", category: habitation, validity: 365, number_of_uploads: 3)
+proof_address = Tag.create(name: "Justificatif de domicile", category: habitation, validity: 90, number_of_uploads: 1)
 
+diplomas = Tag.create(name: "Diplomes", category: education, validity: 10*365, number_of_uploads: 3)
 school_certificate = Tag.create(name: "Certificat de scolarité", category: education, validity: 10*365, number_of_uploads: 1)
-diplomas = Tag.create(name: "Diplomes", category: education, validity: 10*365, number_of_uploads: 5)
+
 
 puts "28 tags créés"
 puts "-------------"

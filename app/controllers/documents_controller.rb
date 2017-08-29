@@ -8,6 +8,7 @@ class DocumentsController < ApplicationController
     @documents = Document.where(user: current_user)
     @categories = Category.all
     @selected = "Database"
+
   end
 
   def new
@@ -44,6 +45,7 @@ class DocumentsController < ApplicationController
 
   def destroy
     @document.destroy
+    flash[:notice] = "Votre document a bien été supprimé"
     redirect_to root_path
   end
 

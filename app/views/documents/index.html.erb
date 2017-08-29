@@ -1,14 +1,17 @@
  <div class="right-column">
   <div class="first-block">
     <h1>Mes documents</h1>
-    <!-- <p>Authorize these app just below to import automatically all your files </p> -->
+
     <div class="panel-group first-child" id="accordion" role="tablist" aria-multiselectable="true">
 
       <% @categories.each do |category| %>
+<!-- ============================= Acordeon Principal ============================ -->
         <div class="panel panel-default">
 
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= category.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
             <div class="panel-heading category" role="tab" id="headingOne">
+
+              <!-- ========================= Affichage de a categorie ====== -->
               <h4 class="panel-title text-center">
                    <span class="pull-left"> <i class="<%= category.icon %> " aria-hidden="true"></i></span><%=category.name %>
 
@@ -27,11 +30,16 @@
 
 
           <div id="collapse<%= category.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
             <div class="panel-body">
               <div class="panel-group first-child" id="accordion<%= category.id %>" role="tablist" aria-multiselectable="true">
 
                 <% category.tags.each do |tag| %>
-                  <% if tag.number_of_uploads < 4 %>
+
+                  <% if tag.number_of_uploads <= 1 %>
+
+              <!-- ============== Si 1 seul document -->
+
                       <%= link_to tag.name, "#tag#{tag.id}", data: { toggle: "modal"} %>
                       <% if tag.complete_for?(current_user) %>
 
@@ -52,19 +60,64 @@
                     <br>
 
                   <% else %>
+<!-- =============== Si + de 1 document ======================  -->
+
+                  <!-- ============ Acordéon secondaire head -->
+                    <div class="panel-group" id="accordion<%= tag.id %>" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion<%= category.id %>" href="#collapse_tag_<%= tag.id %>" aria-expanded="true" aria-controls="collapse<%= category.id %>">
+
+                      <a role="button" data-toggle="collapse" data-parent="#accordion<%= category.id %>" href="#collapse_tag<%=tag.id %>" aria-expanded="true" aria-controls="collapse_tag<%= tag.id %>">
                         <div class="panel-heading" role="tab" id="headingOne">
-                          <h4 class="panel-title text-center">
-                              <%= link_to tag.name, "#", data: { toggle: "modal", target: "#document" } %> - <%= tag.complete_for?(current_user) %>
+                          <h4 class="panel-title ">
+                              <%= link_to tag.name, "#collapse_tag#{tag.id}", data: { toggle: "collapse", parent: "accordion#{tag.id}"} %>
+
+
+                                <% if tag.complete_for?(current_user) %>
+
+                                  <% if check_documents_in_tag_expired?(@documents, tag)%>
+                                    <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"> Date de validité dépassée</i>
+                                  <% else %>
+                                    <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+                                  <% end %>
+
+                                <% else %>
+                                  <%= link_to "Ajouter", new_document_path(document: { tag_id: tag.id }), class: "btn btn-primary btn-xs" %>
+                                <% end %>
                           </h4>
                         </div>
                       </a>
-                      <div id="collapse_tag_<%= tag.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <!-- =========== Fin du head de l'acordeon secondaire ======== -->
+
+                      <div id="collapse_tag<%=tag.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
-                          <% current_user.documents.where(tag: tag).each do |document| %>
-                            <%= render 'modal', tag: tag, document: document  %>
-                          <% end %>
+
+                            <% current_user.documents.where(tag: tag).each do |document| %>
+                            <!-- affiche le nom du tag et sa date  -->
+                              <%= link_to "#{tag.name} #{document.document_date.strftime('%m/%y')}", "#tag#{tag.id}", data: { toggle: "modal"} %>
+
+                              <%= render 'modal', tag: tag, document: document  %>
+                                <% if document %>
+
+
+                                    <% if document.expired? %>
+                                      <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"> Date de validité dépassée</i>
+                                    <% else %>
+                                      <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+                                    <% end %>
+
+
+
+                                <% else %>
+                                  <%= link_to "Ajouter", new_document_path(document: { tag_id: tag.id }), class: "btn btn-primary btn-xs" %>
+                                <% end %>
+
+
+                              <br>
+                            <% end %>
+
+
+
+                          </div>
                         </div>
                       </div>
                     </div>
