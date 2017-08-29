@@ -25,16 +25,16 @@
          <!--  <p>Date du document : <%= document.document_date %></p> -->
           <p>Expire le : <%= document.document_date + document.tag.validity  %> </p>
 
-
-
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <%= link_to 'Delete', document_path(document), method: :delete , class: "btn btn-danger", data: { dismiss: "modal"}%>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
+        <%= link_to "Download", download_path(document), class: "btn btn-primary" %>
         <%= link_to 'Edit', edit_document_path(document), class: "btn btn-primary" %>
+        <%= link_to 'Delete', document_path(document), method: :delete , class: "btn btn-danger", data: { dismiss: "modal"}%>
+
+
+
 
 
 
