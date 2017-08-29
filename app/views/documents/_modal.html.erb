@@ -25,7 +25,7 @@
           <p>Date du document : <%= document.document_date %></p>
           <p>Expire le : <%= document.document_date + document.tag.validity  %> </p>
 
-          <%= link_to 'Back', root_path %>
+          <%= link_to "Download", download_path(document) %>
           <%= link_to 'Edit', edit_document_path(document) %>
           <%= link_to 'Delete', document_path(document), method: :delete %>
 
