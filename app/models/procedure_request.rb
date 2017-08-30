@@ -10,20 +10,25 @@ class ProcedureRequest < ApplicationRecord
   has_many :procedure_documents
   has_many :documents, through: :procedure_documents
 
+  validates :pro , presence: true
+  validates :part , presence: true
+  validates :procedure , presence: true
+
   def valid_for?(user)
     # bool = true
     # tags.each { |tag| bool = bool && tag.complete_for?(user) }
     # bool
 
-    complete = tags.reduce(true) { |bool, tag| bool = bool && tag.complete_for?(user) }
+    # complete = tags.reduce(true) { |bool, tag| bool = bool && tag.complete_for?(user) && !tag.expired_for?(user) }
 
-    status = []
-    self.tags.each do |tag|
-      status << tag.expired_for?(user)
-    end
-    expired = status.include? true
+    # status = []
+    # self.tags.each do |tag|
+    #   status << tag.expired_for?(user)
+    # end
+    # expired = status.include? true
 
-    return complete && !expired
+    # return complete && !expired
+    tags.reduce(true) { |bool, tag| bool = bool && tag.complete_for?(user) && !tag.expired_for?(user) }
   end
 
   def progression(user) # number of tags upload in the category

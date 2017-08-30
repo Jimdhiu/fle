@@ -9,11 +9,19 @@ class Pro::ProcedureRequestsController < ApplicationController
 
   def new
     @procedure_request = current_user.pro_procedures.new
+    # @procedures = Procedure.all
   end
 
   def create
-   @procedure_request = current_user.pro_procedures.new(current_user.pro_procedures_params)
-   @current_user.pro_procedures.save
+    @part = User.find_by_email(procedures_params[:email])
+    @pro = current_user
+    @procedure_request = ProcedureRequest.new(pro: @pro, part: @part, procedure_id: procedures_params[:procedure_id])
+    if @procedure_request.save
+
+      redirect_to pro_procedure_requests_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -27,8 +35,8 @@ class Pro::ProcedureRequestsController < ApplicationController
 
   private
 
-  def pro_procedures_params
-    params.require(:pro_procedures).permit(:tag_id, :document_date, photos: [])
+  def procedures_params
+    params.require(:selection).permit(:email, :procedure_id)
   end
 
 end
