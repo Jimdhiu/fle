@@ -38,4 +38,12 @@ class ProcedureRequest < ApplicationRecord
     end
     "#{progress} / #{tags.size}"
   end
+
+  def procedure_documents
+    # self.part.documents.where(tag: self.tags)
+    part
+    .documents
+    .where(tag: tags)
+  end
+
 end
