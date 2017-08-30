@@ -1,27 +1,29 @@
-<% @procedure_requests.each do |procedure_request| %>
-  <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
-  <% if procedure_request.valid_for?(procedure_request.part) %>
-    <i class="fa fa-check presence-icon" aria-hidden="true"></i>
-  <% else %>
-    <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
-  <% end %>
-    <ul>
-      <% procedure_request.procedure.tags.each do |tag| %>
-        <li>
-          <%= tag.name %>
-          <% if tag.complete_for?(procedure_request.part) %>
-            <% procedure_request.part.documents.where(tag: tag).each do |document| %>
-              <% if document.expired?  %>
-                <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
-              <% else %>
-                <i class="fa fa-check presence-icon" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          <% else %>
-            <i class="fa fa-times" aria-hidden="true"></i>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
 
+<div class="container">
+  <% @procedure_requests.each do |procedure_request| %>
+    <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
+    <% if procedure_request.valid_for?(procedure_request.part) %>
+      <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
+    <% end %>
+      <ul>
+        <% procedure_request.procedure.tags.each do |tag| %>
+          <li>
+            <%= tag.name %>
+            <% if tag.complete_for?(procedure_request.part) %>
+              <% procedure_request.part.documents.where(tag: tag).each do |document| %>
+                <% if document.expired?  %>
+                  <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
+                <% else %>
+                  <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+</div>
