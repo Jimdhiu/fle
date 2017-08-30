@@ -6,11 +6,12 @@
 
 #créer un user
 #créer des documents
-
+ProcedureRequest.destroy_all
 RequestedTag.destroy_all
 Document.destroy_all
 Tag.destroy_all
 Category.destroy_all
+Procedure.destroy_all
 
 User.destroy_all
 
