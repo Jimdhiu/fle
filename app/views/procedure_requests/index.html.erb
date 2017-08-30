@@ -7,7 +7,7 @@
       <% else %>
         <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
       <% end %>
-        <ul>
+        <ol">
           <% procedure_request.procedure.tags.each do |tag| %>
             <li>
               <%= tag.name %>
@@ -20,12 +20,12 @@
                   <% end %>
                 <% end %>
               <% else %>
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <i class="fa fa-times absence-icon" aria-hidden="true"></i>
                 <%= link_to "Ajouter", new_document_path(document: { tag_id: tag.id }), class: "btn btn-primary btn-xs" %>
               <% end %>
             </li>
           <% end %>
-        </ul>
+        </ol>
       <% end %>
   </div>
 </div>

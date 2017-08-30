@@ -5,15 +5,16 @@
 </div>
 
 <div class="right-column">
-  <div class="first-block text-center">
+  <div class="first-block ">
   <% @procedure_requests.each do |procedure_request| %>
-    <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
+    <p> <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
     <% if procedure_request.valid_for?(procedure_request.part) %>
       <i class="fa fa-check presence-icon" aria-hidden="true"></i>
     <% else %>
       <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
     <% end %>
-      <ul>
+    </p>
+      <ol >
         <% procedure_request.procedure.tags.each do |tag| %>
           <li>
             <%= tag.name %>
@@ -26,11 +27,11 @@
                 <% end %>
               <% end %>
             <% else %>
-              <i class="fa fa-times" aria-hidden="true"></i>
+              <i class="fa fa-times absence-icon" aria-hidden="true"></i>
             <% end %>
           </li>
         <% end %>
-      </ul>
+      </ol>
     <% end %>
   </div>
 </div>
