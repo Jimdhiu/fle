@@ -2,6 +2,11 @@
 
 <% @procedure_requests.each do |procedure_request| %>
   <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
+  <% if procedure_request.valid_for?(procedure_request.part) %>
+    <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+  <% else %>
+    <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
+  <% end %>
     <ul>
       <% procedure_request.procedure.tags.each do |tag| %>
         <li>
