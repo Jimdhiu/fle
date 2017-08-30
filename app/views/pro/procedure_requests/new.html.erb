@@ -1,0 +1,14 @@
+<div class="right-column">
+  <div class="first-block">
+    <div class="text-center">
+    <h2>Créer une procédure client</h2>
+    </div>
+    <div class="form-for">
+      <%= simple_form_for :selection, url: pro_procedure_requests_path, method: :post do |d| %>
+       <%= d.input :email, as: :string, label: "email du client", placeholder: 'michel-michel@michel.com' %>
+       <%= d.input :procedure_id, collection: Procedure.all, prompt: "Choisir", label: "Procédure" %>
+       <%= d.submit class: "btn btn-primary" %>
+     <% end %>
+    </div>
+  </div>
+</div>
