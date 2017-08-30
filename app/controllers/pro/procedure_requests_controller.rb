@@ -16,6 +16,7 @@ class Pro::ProcedureRequestsController < ApplicationController
     @part = User.find_by_email(procedures_params[:email])
     @pro = current_user
     @procedure_request = ProcedureRequest.new(pro: @pro, part: @part, procedure_id: procedures_params[:procedure_id])
+    @procedure_request.status = "pending"
     if @procedure_request.save
 
       redirect_to pro_procedure_requests_path

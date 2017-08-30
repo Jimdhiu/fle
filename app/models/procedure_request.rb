@@ -1,5 +1,5 @@
 class ProcedureRequest < ApplicationRecord
-  enum status: { 0 => "pending", 1 => "validated" }
+  enum status: { pending: 0, validated: 1 }
 
   # belongs_to :user
   belongs_to :procedure
