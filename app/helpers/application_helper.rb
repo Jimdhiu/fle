@@ -14,6 +14,7 @@ module ApplicationHelper
   end
 
   def default_procedure_requests_past(user)
+    return unless user
     user.status == 'pro' ? pro_procedure_requests_path : procedure_requests_path
   end
 end
