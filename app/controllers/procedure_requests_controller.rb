@@ -1,6 +1,6 @@
 class ProcedureRequestsController < ApplicationController
   def index
-    @procedure_requests = current_user.part_procedures
+    @procedure_requests = current_user.part_procedures.all
   end
 
   def show
@@ -8,7 +8,7 @@ class ProcedureRequestsController < ApplicationController
   end
 
   def destroy
-    
+
   end
 
   private

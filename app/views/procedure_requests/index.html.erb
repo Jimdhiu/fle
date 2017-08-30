@@ -1,0 +1,31 @@
+<div class=“right-column”>
+  <div class=“first-block text-center”>
+    <% @procedure_requests.each do |procedure_request| %>
+      <%= procedure_request.procedure.name %>
+      <% if procedure_request.valid_for?(procedure_request.part) %>
+        <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
+      <% end %>
+        <ul>
+          <% procedure_request.procedure.tags.each do |tag| %>
+            <li>
+              <%= tag.name %>
+              <% if tag.complete_for?(procedure_request.part) %>
+                <% procedure_request.part.documents.where(tag: tag).each do |document| %>
+                  <% if document.expired?  %>
+                    <i class="fa fa-exclamation-circle expiration-icon" data-toggle="tooltip" title="Le date d'expiration du document est arrivée à échéance" aria-hidden="true"></i>
+                  <% else %>
+                    <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <i class="fa fa-times" aria-hidden="true"></i>
+                <%= link_to "Ajouter", new_document_path(document: { tag_id: tag.id }), class: "btn btn-primary btn-xs" %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+</div>
