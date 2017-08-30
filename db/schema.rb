@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828125035) do
+ActiveRecord::Schema.define(version: 20170830094911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170828125035) do
     t.integer "part_id"
     t.integer "pro_id"
     t.integer "procedure_id"
+    t.integer "status"
     t.index ["part_id"], name: "index_procedure_requests_on_part_id", using: :btree
     t.index ["pro_id"], name: "index_procedure_requests_on_pro_id", using: :btree
     t.index ["procedure_id"], name: "index_procedure_requests_on_procedure_id", using: :btree

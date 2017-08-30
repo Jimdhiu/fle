@@ -1,4 +1,6 @@
 class ProcedureRequest < ApplicationRecord
+  enum status: { 0 => "pending", 1 => "validated" }
+
   # belongs_to :user
   belongs_to :procedure
   has_many :requested_tags, through: :procedure
