@@ -22,7 +22,7 @@ class DocumentsController < ApplicationController
     if @document.valid?
       @document.save
       flash[:notice] = "Votre document a bien été ajouté à votre librairie"
-      redirect_to root_path
+      redirect_to documents_path
     else
       render :new
     end
@@ -37,7 +37,7 @@ class DocumentsController < ApplicationController
 
   def update
      if @document.update(document_params)
-      redirect_to root_path
+      redirect_to documents_path
     else
       render :edit
     end
@@ -46,7 +46,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     flash[:notice] = "Votre document a bien été supprimé"
-    redirect_to root_path
+    redirect_to documents_path
   end
 
   def download
