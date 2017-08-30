@@ -12,7 +12,7 @@
           <% if tag.complete_for?(procedure_request.part) %>
             <% procedure_request.part.documents.where(tag: tag).each do |document| %>
               <% if document.expired?  %>
-                <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
+                <i class="fa fa-exclamation-circle expiration-icon" data-toggle="tooltip" title="Le date d'expiration du document est arrivée à échéance" aria-hidden="true"></i>
               <% else %>
                 <i class="fa fa-check presence-icon" aria-hidden="true"></i>
               <% end %>
@@ -24,4 +24,3 @@
       <% end %>
     </ul>
   <% end %>
-
