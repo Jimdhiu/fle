@@ -3,9 +3,8 @@
     <%= image_tag "Fileon.png" ,class:"logo" %>
   <% end %>
   <div class="bottom">
-    <p class=" <%= 'selected' if @selected ==  'Upload'%> "><a href="/documents/new">Upload</a></p>
-    <p class=" <%= 'selected' if @selected == 'Documents' %> "><a href="/documents">Database</a></p>
-    <p class=" <%= 'selected' if @selected == 'Procédure' %> "><a href="/viande/">Transfers</a></p>
+    <p class=" <%= 'selected' if @selected ==  'Upload'%> "><a href="/documents/new">Uploader</a></p>
+    <p class=" <%= 'selected' if @selected == 'Database' %> "><a href="/documents/">Documents</a></p>
+    <p class=" <%= 'selected' if @selected == 'Transfers' %> "><a href="/procedure_requests">Procédures</a></p>
   </div>
-
 </div>

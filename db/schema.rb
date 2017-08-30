@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828125035) do
+ActiveRecord::Schema.define(version: 20170830123229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,19 +48,11 @@ ActiveRecord::Schema.define(version: 20170828125035) do
     t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
   end
 
-  create_table "procedure_documents", force: :cascade do |t|
-    t.integer  "procedure_request_id"
-    t.integer  "document_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.index ["document_id"], name: "index_procedure_documents_on_document_id", using: :btree
-    t.index ["procedure_request_id"], name: "index_procedure_documents_on_procedure_request_id", using: :btree
-  end
-
   create_table "procedure_requests", force: :cascade do |t|
     t.integer "part_id"
     t.integer "pro_id"
     t.integer "procedure_id"
+    t.integer "status"
     t.index ["part_id"], name: "index_procedure_requests_on_part_id", using: :btree
     t.index ["pro_id"], name: "index_procedure_requests_on_pro_id", using: :btree
     t.index ["procedure_id"], name: "index_procedure_requests_on_procedure_id", using: :btree
@@ -117,8 +109,6 @@ ActiveRecord::Schema.define(version: 20170828125035) do
 
   add_foreign_key "documents", "tags"
   add_foreign_key "documents", "users"
-  add_foreign_key "procedure_documents", "documents"
-  add_foreign_key "procedure_documents", "procedure_requests"
   add_foreign_key "requested_tags", "procedures"
   add_foreign_key "requested_tags", "tags"
   add_foreign_key "tags", "categories"
