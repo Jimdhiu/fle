@@ -1,5 +1,6 @@
 
-<div class="container">
+<div class="right-column">
+  <div class="first-block text-center">
   <% @procedure_requests.each do |procedure_request| %>
     <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
     <% if procedure_request.valid_for?(procedure_request.part) %>
@@ -26,4 +27,5 @@
         <% end %>
       </ul>
     <% end %>
+  </div>
 </div>

@@ -1,4 +1,6 @@
 class ProcedureRequest < ApplicationRecord
+  enum status: { 0 => "pending", 1 => "validated" }
+
   # belongs_to :user
   belongs_to :procedure
   has_many :requested_tags, through: :procedure
@@ -7,23 +9,26 @@ class ProcedureRequest < ApplicationRecord
   # belongs_to :pro, class_name: :User, foreign_key: :pro_id
   belongs_to :pro, class_name: "User"
   belongs_to :part, class_name: "User"
-  has_many :procedure_documents
-  has_many :documents, through: :procedure_documents
+
+  validates :pro , presence: true
+  validates :part , presence: true
+  validates :procedure , presence: true
 
   def valid_for?(user)
     # bool = true
     # tags.each { |tag| bool = bool && tag.complete_for?(user) }
     # bool
 
-    complete = tags.reduce(true) { |bool, tag| bool = bool && tag.complete_for?(user) }
+    # complete = tags.reduce(true) { |bool, tag| bool = bool && tag.complete_for?(user) && !tag.expired_for?(user) }
 
-    status = []
-    self.tags.each do |tag|
-      status << tag.expired_for?(user)
-    end
-    expired = status.include? true
+    # status = []
+    # self.tags.each do |tag|
+    #   status << tag.expired_for?(user)
+    # end
+    # expired = status.include? true
 
-    return complete && !expired
+    # return complete && !expired
+    tags.reduce(true) { |bool, tag| bool = bool && tag.complete_for?(user) && !tag.expired_for?(user) }
   end
 
   def progression(user) # number of tags upload in the category
@@ -35,4 +40,12 @@ class ProcedureRequest < ApplicationRecord
     end
     "#{progress} / #{tags.size}"
   end
+
+  def procedure_documents
+    # self.part.documents.where(tag: self.tags)
+    part
+    .documents
+    .where(tag: tags)
+  end
+
 end
