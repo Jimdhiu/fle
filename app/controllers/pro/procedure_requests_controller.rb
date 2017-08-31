@@ -35,41 +35,23 @@ class Pro::ProcedureRequestsController < ApplicationController
   end
 
   def download_zip
-    documents =[]
+
+    @procedure_request = ProcedureRequest.find(params[:procedure_request_id])
+
+    part = @procedure_request.part
+    part_fullname = "#{part.first_name} #{part.last_name}"
+
     #récupérer les documents requis de la procedure en cours
-    self.procedure_tags.each do |tag|
-      self.part.documents.where(tag: tag).each do |document|
-        documents << document
-      end
+    documents = @procedure_request.procedure_documents
+    public_ids = []
+    documents.each do |document|
+      public_ids += document.photos.map(&:public_id)
     end
-    byebug
-    #Attachment name
-    filename = 'documents.zip'
-    temp_file = Tempfile.new(filename)
+    redirect_to Cloudinary::Utils.download_zip_url(:public_ids => public_ids, target_public_id: part_fullname)
 
-    begin
-      #This is the tricky part
-      #Initialize the temp file as a zip file
-      Zip::OutputStream.open(temp_file) { |zos| }
-
-      #Add files to the zip file as usual
-      Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip|
-        #Put files in here
-      end
-
-      #Read the binary data from the file
-      zip_data = File.read(temp_file.path)
-
-      #Send the data to the browser as an attachment
-      #We do not send the file directly because it will
-      #get deleted before rails actually starts sending it
-      send_data(zip_data, :type => 'application/zip', :filename => filename)
-    ensure
-      #Close and delete the temp file
-      temp_file.close
-      temp_file.unlink
-    end
   end
+
+
 
 
 

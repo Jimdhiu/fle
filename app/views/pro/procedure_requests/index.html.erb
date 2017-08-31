@@ -20,6 +20,9 @@
   <% @procedure_requests.validated.each do |procedure_request| %>
 
 
+  <%= link_to "telechargeeee", pro_procedure_request_download_zip_path(procedure_request)  %>
+
+
     <p> <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
     <% if procedure_request.valid_for?(procedure_request.part) %>
       <i class="fa fa-check presence-icon" aria-hidden="true"></i>
