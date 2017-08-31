@@ -25,17 +25,20 @@
       <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
     <% end %>
     </p>
+<!-- ======================= liste des documents requis pour la procédure ========= -->
       <ol >
         <% procedure_request.procedure.tags.each do |tag| %>
           <li>
             <%= tag.name %>
             <% if tag.complete_for?(procedure_request.part) %>
               <% procedure_request.part.documents.where(tag: tag).each do |document| %>
+
                 <% if document.expired?  %>
                   <i class="fa fa-exclamation-circle expiration-icon" data-toggle="tooltip" title="Le date d'expiration du document est arrivée à échéance" aria-hidden="true"></i>
                 <% else %>
                   <i class="fa fa-check presence-icon" aria-hidden="true"></i>
                 <% end %>
+                <%= link_to "Download", download_path(document), class: "btn btn-primary btn-xs" %>
               <% end %>
             <% else %>
               <i class="fa fa-times absence-icon" aria-hidden="true"></i>
@@ -43,6 +46,8 @@
           </li>
         <% end %>
       </ol>
+<!-- ================================================================================== -->
+
     <% end %>
   </div>
 </div>
