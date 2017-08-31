@@ -1,25 +1,13 @@
-<% @procedure_requests.pending.each do |procedure_request|  %>
-  <h5><%= procedure_request.procedure.name %>
-    envoyé par
-    <%= procedure_request.pro.first_name %>
-    <%= procedure_request.pro.last_name %>
-    <%= procedure_request.pro.company %>
-  </h5>
-  <h2> <%= link_to "Accepter", procedure_request_path(procedure_request, status: :validated), method: :patch, class: "btn btn-success" %>
-       <%= link_to "Refuser", procedure_request_path(procedure_request), method: :delete, class: "btn btn-danger" %>
-  </h2>
-<% end %>
-
-<div class=“right-column”>
-  <div class=“first-block text-center”>
-    <% @procedure_requests.validated.each do |procedure_request| %>
+<div class="right-column">
+  <div class="first-block text-center">
+    <% @procedure_requests.each do |procedure_request| %>
       <%= procedure_request.procedure.name %>
       <% if procedure_request.valid_for?(procedure_request.part) %>
         <i class="fa fa-check presence-icon" aria-hidden="true"></i>
       <% else %>
         <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
       <% end %>
-        <ol">
+        <ul>
           <% procedure_request.procedure.tags.each do |tag| %>
             <li>
               <%= tag.name %>
@@ -32,14 +20,12 @@
                   <% end %>
                 <% end %>
               <% else %>
-                <i class="fa fa-times absence-icon" aria-hidden="true"></i>
+                <i class="fa fa-times" aria-hidden="true"></i>
                 <%= link_to "Ajouter", new_document_path(document: { tag_id: tag.id }), class: "btn btn-primary btn-xs" %>
               <% end %>
             </li>
           <% end %>
-        </ol>
+        </ul>
       <% end %>
   </div>
 </div>
-
-
