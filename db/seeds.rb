@@ -78,7 +78,7 @@ jimmy = User.create(first_name: "Jimmy", last_name: "Dhiu",email: "dhiu.jim@gmai
 puts "1 Jimmy créé ! (client particulier)"
 puts "-------------"
 
-jorge = User.create(first_name: "Jorge", last_name: "Ruivinho",email: "djorge.ruivinho@me.com", password: "password", address: "35 rue de la paix 75000 Paris", company: "BNP", function: "Directeur des opérations financières", status: "pro")
+jorge = User.create(first_name: "Jorge", last_name: "Ruivinho",email: "jorge.ruivinho@me.com", password: "password", address: "35 rue de la paix 75000 Paris", company: "BNP", function: "Directeur des opérations financières", status: "pro")
 
 puts "1 Jorge créé ! (professionnel)"
 puts "-------------"
@@ -124,7 +124,7 @@ RequestedTag.create(procedure: bank_account, tag: proof_address)
 puts "Documents requis pour l'ouverture d'un compte bancaire"
 puts ""
 
-ProcedureRequest.create(part: jimmy, pro: jorge, procedure: mortgage_procedure)
+ProcedureRequest.create(part: jimmy, pro: jorge, procedure: mortgage_procedure, status: 0)
 
 
 

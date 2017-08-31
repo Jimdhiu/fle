@@ -47,10 +47,13 @@
                     <% else %>
                       <i class="fa fa-check presence-icon" aria-hidden="true"></i>
                     <% end %>
+                  <%= link_to "Download", download_path(document), class: "btn btn-primary btn-xs" %>
                   <% end %>
+
                 <% else %>
                   <i class="fa fa-times absence-icon" aria-hidden="true"></i>
                 <% end %>
+
               </li>
             <% end %>
           </ol>
@@ -58,5 +61,6 @@
       </div>
     </div>
   <% end %>
+
 </div>
 
