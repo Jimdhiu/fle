@@ -34,6 +34,27 @@ class Pro::ProcedureRequestsController < ApplicationController
   def destroy
   end
 
+  def download_zip
+
+    @procedure_request = ProcedureRequest.find(params[:procedure_request_id])
+
+    part = @procedure_request.part
+    part_fullname = "#{part.first_name} #{part.last_name}"
+
+    #récupérer les documents requis de la procedure en cours
+    documents = @procedure_request.procedure_documents
+    public_ids = []
+    documents.each do |document|
+      public_ids += document.photos.map(&:public_id)
+    end
+    redirect_to Cloudinary::Utils.download_zip_url(:public_ids => public_ids, target_public_id: part_fullname)
+
+  end
+
+
+
+
+
   private
 
   def procedures_params

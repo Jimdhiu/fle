@@ -53,6 +53,8 @@ class DocumentsController < ApplicationController
     send_data data.read, filename: "doc.#{Document.find(params[:id]).photos.first.format}", type: "application/#{Document.find(params[:id]).photos.first.format}"
   end
 
+
+
   private
 
   def document_params

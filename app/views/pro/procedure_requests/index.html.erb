@@ -20,11 +20,13 @@
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <% @procedure_requests.validated.each do |procedure_request| %>
+
     <div class="panel panel-default">
       <div class="panel-heading" role="tab" id="heading<%= procedure_request.procedure.id %>">
         <h4 class="panel-title">
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= procedure_request.procedure.id %>" aria-expanded="true" aria-controls="collapse<%= procedure_request.procedure.id %>">
             <p> <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
+             <%= link_to "telechargeeee", pro_procedure_request_download_zip_path(procedure_request)  %>
             <% if procedure_request.valid_for?(procedure_request.part) %>
               <i class="fa fa-check presence-icon" aria-hidden="true"></i>
             <% else %>

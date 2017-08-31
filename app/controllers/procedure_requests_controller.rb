@@ -19,6 +19,7 @@ class ProcedureRequestsController < ApplicationController
     redirect_to procedure_requests_path
   end
 
+
   private
 
   def procedure_request_params

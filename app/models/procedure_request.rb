@@ -43,9 +43,7 @@ class ProcedureRequest < ApplicationRecord
 
   def procedure_documents
     # self.part.documents.where(tag: self.tags)
-    part
-    .documents
-    .where(tag: tags)
+    part.documents.where(tag: tags)
   end
 
 end

@@ -175,6 +175,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rubyzip (1.2.1)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -222,6 +223,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    zip-zip (0.3)
+      rubyzip (>= 1.0.0)
 
 PLATFORMS
   ruby
@@ -246,12 +249,14 @@ DEPENDENCIES
   puma
   rails (= 5.0.5)
   redis
+  rubyzip
   sass-rails
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
   web-console (>= 3.3.0)
+  zip-zip
 
 RUBY VERSION
    ruby 2.3.4p301

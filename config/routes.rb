@@ -7,8 +7,11 @@ Rails.application.routes.draw do
 
   resources :procedure_requests, only: [:index, :update, :show, :destroy]
 
+
   namespace :pro do
-    resources :procedure_requests
+    resources :procedure_requests do
+      get "download_zip", to: "pro_procedures", as: "download_zip"
+    end
   end
 
   get "/download/:id", to: "documents#download", as: "download"
