@@ -14,4 +14,15 @@ class User < ApplicationRecord
   has_many :pro_procedures, foreign_key: :pro_id, class_name: "ProcedureRequest"
   has_many :part_procedures, foreign_key: :part_id, class_name: "ProcedureRequest"
 
+
+  def has_new_procedure_request?
+    new_procedure = false
+    part_procedures.each do |pp|
+      if pp.pending?
+        new_procedure = true
+        break
+      end
+    end
+    new_procedure
+  end
 end
