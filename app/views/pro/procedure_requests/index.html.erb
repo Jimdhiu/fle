@@ -1,3 +1,14 @@
+<% @procedure_requests.pending.each do |procedure_request|  %>
+  <h5><%= procedure_request.procedure.name %>
+    envoyée à
+    <%= procedure_request.part.first_name %>
+    <%= procedure_request.part.last_name %>
+    en attente d'acceptation
+  </h5>
+
+<% end %>
+
+
 <div class="right-column">
   <div class="first-block text-center">
     <%= link_to 'Créer une nouvelle procédure', new_pro_procedure_request_path, class: "btn btn-primary"%>
@@ -6,7 +17,7 @@
 
 <div class="right-column">
   <div class="first-block ">
-  <% @procedure_requests.each do |procedure_request| %>
+  <% @procedure_requests.validated.each do |procedure_request| %>
     <p> <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
     <% if procedure_request.valid_for?(procedure_request.part) %>
       <i class="fa fa-check presence-icon" aria-hidden="true"></i>
