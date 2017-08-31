@@ -1,31 +1,46 @@
 <div class="right-column">
-  <div class="first-block text-center">
-    <% @procedure_requests.each do |procedure_request| %>
-      <%= procedure_request.procedure.name %>
-      <% if procedure_request.valid_for?(procedure_request.part) %>
-        <i class="fa fa-check presence-icon" aria-hidden="true"></i>
-      <% else %>
-        <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
-      <% end %>
-        <ul>
-          <% procedure_request.procedure.tags.each do |tag| %>
-            <li>
-              <%= tag.name %>
-              <% if tag.complete_for?(procedure_request.part) %>
-                <% procedure_request.part.documents.where(tag: tag).each do |document| %>
-                  <% if document.expired?  %>
-                    <i class="fa fa-exclamation-circle expiration-icon" data-toggle="tooltip" title="Le date d'expiration du document est arrivée à échéance" aria-hidden="true"></i>
-                  <% else %>
-                    <i class="fa fa-check presence-icon" aria-hidden="true"></i>
-                  <% end %>
-                <% end %>
+  <div class="first-block">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <% @procedure_requests.each do |procedure_request| %>
+              <%= procedure_request.procedure.name %>
+              <% if procedure_request.valid_for?(procedure_request.part) %>
+                <i class="fa fa-check presence-icon" aria-hidden="true"></i>
               <% else %>
-                <i class="fa fa-times" aria-hidden="true"></i>
-                <%= link_to "Ajouter", new_document_path(document: { tag_id: tag.id }), class: "btn btn-primary btn-xs" %>
+                <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
               <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+          <ul>
+            <% procedure_request.procedure.tags.each do |tag| %>
+              <li>
+                <%= tag.name %>
+                <% if tag.complete_for?(procedure_request.part) %>
+                  <% procedure_request.part.documents.where(tag: tag).each do |document| %>
+                    <% if document.expired?  %>
+                      <i class="fa fa-exclamation-circle expiration-icon" data-toggle="tooltip" title="Le date d'expiration du document est arrivée à échéance" aria-hidden="true"></i>
+                    <% else %>
+                      <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                  <%= link_to "Ajouter", new_document_path(document: { tag_id: tag.id }), class: "btn btn-primary btn-xs" %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
+
