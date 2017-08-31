@@ -1,6 +1,7 @@
 class ProcedureRequestsController < ApplicationController
   def index
     @procedure_requests = current_user.part_procedures.all
+    @selected = "Procédures"
   end
 
   def show
