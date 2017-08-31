@@ -26,9 +26,12 @@
         <h4 class="panel-title">
           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= procedure_request.procedure.id %>" aria-expanded="true" aria-controls="collapse<%= procedure_request.procedure.id %>">
             <p> <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
-             <%= link_to "telechargeeee", pro_procedure_request_download_zip_path(procedure_request)  %>
+
+
+
             <% if procedure_request.valid_for?(procedure_request.part) %>
               <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+              <%= link_to "Télécharger", pro_procedure_request_download_zip_path(procedure_request), class: "btn btn-primary btn-xs"  %>
             <% else %>
               <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
             <% end %>
@@ -49,7 +52,7 @@
                     <% else %>
                       <i class="fa fa-check presence-icon" aria-hidden="true"></i>
                     <% end %>
-                  <%= link_to "Download", download_path(document), class: "btn btn-primary btn-xs" %>
+
                   <% end %>
 
                 <% else %>
