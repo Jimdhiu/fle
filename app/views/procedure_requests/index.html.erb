@@ -1,3 +1,16 @@
+<% @procedure_requests.pending.each do |procedure_request|  %>
+  <h5><%= procedure_request.procedure.name %>
+    envoyé par
+  <%= procedure_request.pro.first_name %>
+  <%= procedure_request.pro.last_name %>
+  <%= procedure_request.pro.company %>
+  </h5>
+  <h2> <%= link_to "Accepter", procedure_request_path(procedure_request, status: :validated), method: :patch, class: "btn btn-success" %>
+       <%= link_to "Refuser", procedure_request_path(procedure_request), method: :delete, class: "btn btn-danger" %>
+  </h2>
+ <% end %>
+
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 <% @procedure_requests.each do |procedure_request| %>
   <div class="panel panel-default">
@@ -39,4 +52,3 @@
   </div>
 <% end %>
 </div>
-
