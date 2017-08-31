@@ -18,6 +18,8 @@
 <div class="right-column">
   <div class="first-block ">
   <% @procedure_requests.validated.each do |procedure_request| %>
+
+
     <p> <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
     <% if procedure_request.valid_for?(procedure_request.part) %>
       <i class="fa fa-check presence-icon" aria-hidden="true"></i>
