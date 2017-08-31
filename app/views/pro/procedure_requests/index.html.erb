@@ -15,44 +15,54 @@
   </div>
 </div>
 
-<div class="right-column">
-  <div class="first-block ">
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <% @procedure_requests.validated.each do |procedure_request| %>
 
-
-  <%= link_to "telechargeeee", pro_procedure_request_download_zip_path(procedure_request)  %>
-
-
-    <p> <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
-    <% if procedure_request.valid_for?(procedure_request.part) %>
-      <i class="fa fa-check presence-icon" aria-hidden="true"></i>
-    <% else %>
-      <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
-    <% end %>
-    </p>
-<!-- ======================= liste des documents requis pour la procédure ========= -->
-      <ol >
-        <% procedure_request.procedure.tags.each do |tag| %>
-          <li>
-            <%= tag.name %>
-            <% if tag.complete_for?(procedure_request.part) %>
-              <% procedure_request.part.documents.where(tag: tag).each do |document| %>
-
-                <% if document.expired?  %>
-                  <i class="fa fa-exclamation-circle expiration-icon" data-toggle="tooltip" title="Le date d'expiration du document est arrivée à échéance" aria-hidden="true"></i>
-                <% else %>
-                  <i class="fa fa-check presence-icon" aria-hidden="true"></i>
-                <% end %>
-                <%= link_to "Download", download_path(document), class: "btn btn-primary btn-xs" %>
-              <% end %>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="heading<%= procedure_request.procedure.id %>">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= procedure_request.procedure.id %>" aria-expanded="true" aria-controls="collapse<%= procedure_request.procedure.id %>">
+            <p> <%= procedure_request.procedure.name %> pour <%=procedure_request.part.email  %>
+             <%= link_to "telechargeeee", pro_procedure_request_download_zip_path(procedure_request)  %>
+            <% if procedure_request.valid_for?(procedure_request.part) %>
+              <i class="fa fa-check presence-icon" aria-hidden="true"></i>
             <% else %>
-              <i class="fa fa-times absence-icon" aria-hidden="true"></i>
+              <i class="fa fa-exclamation-circle expiration-icon" aria-hidden="true"></i>
             <% end %>
-          </li>
-        <% end %>
-      </ol>
-<!-- ================================================================================== -->
+            </p>
+          </a>
+        </h4>
+      </div>
+      <div id="collapse<%= procedure_request.procedure.id %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= procedure_request.procedure.id %>">
+        <div class="panel-body">
+          <ol >
+            <% procedure_request.procedure.tags.each do |tag| %>
+              <li>
+                <%= tag.name %>
+                <% if tag.complete_for?(procedure_request.part) %>
+                  <% procedure_request.part.documents.where(tag: tag).each do |document| %>
+                    <% if document.expired?  %>
+                      <i class="fa fa-exclamation-circle expiration-icon" data-toggle="tooltip" title="Le date d'expiration du document est arrivée à échéance" aria-hidden="true"></i>
+                    <% else %>
+                      <i class="fa fa-check presence-icon" aria-hidden="true"></i>
+                    <% end %>
+                  <%= link_to "Download", download_path(document), class: "btn btn-primary btn-xs" %>
+                  <% end %>
 
-    <% end %>
-  </div>
+                <% else %>
+                  <i class="fa fa-times absence-icon" aria-hidden="true"></i>
+                <% end %>
+
+              </li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
 </div>
+
