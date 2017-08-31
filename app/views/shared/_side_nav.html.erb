@@ -4,8 +4,8 @@
   <% end %>
   <div class="bottom">
     <p class=" <%= 'selected' if @selected ==  'Upload'%> "> <%= link_to 'Upload', new_document_path %> </p>
-    <p class=" <%= 'selected' if @selected == 'Database' %> "> <%= link_to 'My Documents', documents_path %> </p>
-    <p class=" <%= 'selected' if @selected == 'Transfers' %> ">
+    <p class=" <%= 'selected' if @selected == 'Documents' %> "> <%= link_to 'Documents', documents_path %> </p>
+    <p class=" <%= 'selected' if @selected == 'Procédures' %> ">
      <%= link_to 'Procédures', default_procedure_requests_past(current_user) %>
     </p>
   </div>
