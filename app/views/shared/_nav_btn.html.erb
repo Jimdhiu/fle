@@ -1,7 +1,9 @@
 <div class="op">
   <div class="button-upload">
     <%= link_to "Upload", new_document_path, class: "btn btn-success", id: "btn-upload" %>
-    <a href="#" class="btn btn-warning">Alert</a>
+    <% if current_user && current_user.role != "pro" && current_user.has_new_procedure_request? %>
+      <%= link_to "Vous avez reçu une nouvelle demande", procedure_requests_path, class: "btn btn-warning" %>
+    <% end %>
   </div>
   <div class="form-inline" id="the-basics">
    <%= simple_form_for :search, url: documents_path, :method => :get do |f| %>
