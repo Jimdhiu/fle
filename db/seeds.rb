@@ -124,7 +124,7 @@ RequestedTag.create(procedure: bank_account, tag: proof_address)
 puts "Documents requis pour l'ouverture d'un compte bancaire"
 puts ""
 
-ProcedureRequest.create(part: jimmy, pro: jorge, procedure: mortgage_procedure, status: 0)
+
 
 
 
