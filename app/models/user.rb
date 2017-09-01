@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  enum role: { 0 => "pro", 1 => "part" }
+  # enum role: { 0 => "pro", 1 => "part" }
   # enum role: ["pro", "part"]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,13 +16,19 @@ class User < ApplicationRecord
 
 
   def has_new_procedure_request?
-    new_procedure = false
-    part_procedures.each do |pp|
-      if pp.pending?
-        new_procedure = true
-        break
-      end
-    end
-    new_procedure
+    part_procedures.pending.any?
+    # new_procedure = false
+    # part_procedures.each do |pp|
+    #   if pp.pending?
+    #     new_procedure = true
+    #     break
+    #   end
+    # end
+    # new_procedure
   end
+
+  def part?
+    self.status != "pro"
+  end
+
 end
