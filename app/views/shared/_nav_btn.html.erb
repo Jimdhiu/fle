@@ -1,8 +1,12 @@
 <div class="op">
   <div class="button-upload">
     <%= link_to "Upload", new_document_path, class: "btn btn-success", id: "btn-upload" %>
-    <% if current_user && current_user.role != "pro" && current_user.has_new_procedure_request? %>
-      <%= link_to "Vous avez reçu une nouvelle demande", procedure_requests_path, class: "btn btn-warning" %>
+    <% if current_user && current_user.part? && current_user.has_new_procedure_request? %>
+      <%= link_to procedure_requests_path, class: "btn-fileon-alert" do %>
+        <div class="btn btn-warning">Alerte</div>
+        <div class="alert-pin"><%= current_user.part_procedures.pending.count %></div>
+      <% end %>
+      <%#= link_to "Vous avez reçu une nouvelle demande", procedure_requests_path, class: "btn btn-warning" %>
     <% end %>
   </div>
   <div class="form-inline" id="the-basics">

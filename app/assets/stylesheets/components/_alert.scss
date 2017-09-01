@@ -13,3 +13,20 @@
 .alert-warning {
   background: $red;
 }
+.btn-fileon-alert{
+  position: relative;
+  .alert-pin{
+    position: absolute;
+    z-index: 10;
+    top: -10px;
+    right: -10px;
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+  }
+}
