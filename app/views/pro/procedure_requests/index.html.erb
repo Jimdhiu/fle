@@ -1,3 +1,7 @@
+<% content_for(:title_tag) do %>
+  Vos procédures en cours
+<% end %>
+
 <% @procedure_requests.pending.each do |procedure_request|  %>
   <h5><%= procedure_request.procedure.name %>
     envoyée à
