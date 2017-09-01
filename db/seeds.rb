@@ -49,10 +49,10 @@ home_tax = Tag.create(name: "Taxe d'habitation", category: finance, validity: 1 
 life_insurance = Tag.create(name: "Contrat d'assurance vie", category: finance, validity: 10 * 365, number_of_uploads: 1)
 mortgage = Tag.create(name: "Contrat de crédit immobilier", category: finance, validity: 2 * 365, number_of_uploads: 1)
 
-job = Tag.create(name: "Bulletins de salaire", category: emploi, validity: 1 * 365, number_of_uploads: 12)
+job = Tag.create(name: "Bulletins de salaire", category: emploi, validity: 1 * 365, number_of_uploads: 3)
 employment_contract = Tag.create(name: "Contrat de travail", category: emploi, validity: 10 * 365, number_of_uploads: 1)
 employment_notice = Tag.create(name: "Attestation d'embauche", category: emploi, validity: 10 * 365, number_of_uploads: 1)
-criminal_record = Tag.create(name: "Casier juficiaire", category: emploi, validity: 90, number_of_uploads: 1)
+criminal_record = Tag.create(name: "Casier juficiaire", category: emploi, validity: 365, number_of_uploads: 1)
 
 ordonnance = Tag.create(name: "Ordonnances", category: medical, validity: 1 * 365, number_of_uploads: 10)
 health_book = Tag.create(name: "Carnet de santé", category: medical, validity: 10*365, number_of_uploads: 1)
@@ -85,8 +85,16 @@ puts "-------------"
 
 
 
-Document.create(user: jimmy, tag: identity_card, document_date: Date.new(2015,11,23), photo_urls: ["http://img.over-blog-kiwi.com/300x300/0/55/64/82/201308/ob_b58de8_photo-633881098554843750-2-1.jpg"])
-Document.create(user: jimmy, tag: passport, document_date: Date.new(2007,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+Document.create(user: jimmy, tag: identity_card, document_date: Date.new(2015,11,23), photo_urls: ["http://lyon-saveurs.fr/wp-content/uploads/2016/09/CNI.jpg"])
+Document.create(user: jimmy, tag: passport, document_date: Date.new(2017,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+Document.create(user: jimmy, tag: family_book, document_date: Date.new(2017,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+Document.create(user: jimmy, tag: responsability, document_date: Date.new(2017,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+Document.create(user: jimmy, tag: job, document_date: Date.new(2017,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+Document.create(user: jimmy, tag: job, document_date: Date.new(2017,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+Document.create(user: jimmy, tag: job, document_date: Date.new(2017,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+Document.create(user: jimmy, tag: employment_contract, document_date: Date.new(2017,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+Document.create(user: jimmy, tag: employment_notice, document_date: Date.new(2017,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
+Document.create(user: jimmy, tag: criminal_record, document_date: Date.new(2017,04,05), photo_urls: ["http://www.vos-demarches.com/medias/img/source/Passeport/passeport_biometrique.jpg"])
 
 puts " 1 carte d'identité créée"
 puts "-------------------------"
