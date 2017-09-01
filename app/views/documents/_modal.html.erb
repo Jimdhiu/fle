@@ -19,7 +19,7 @@
           <% if document.photos? %>
 
             <% document.photos.each do |photo| %>
-                <%= cl_image_tag photo.path, crop: :fill %>
+                <%= cl_image_tag photo.path, crop: :fill, class: "contain" %>
             <% end %>
           <% end %>
          <!--  <p>Date du document : <%= document.document_date %></p> -->
